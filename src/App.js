@@ -4,13 +4,14 @@ import './App.css';
 
 import AppHeader from './app/component/header/header'
 import AppLogin from './app/component/login/login'
+import AppCalendar from './app/component/calendar/calendar'
 
 function App() {
   return (
     <Router>
       <AppHeader/>
       <Switch>
-      <Route  exact path='/' />
+      <Route  path='/' exact component={AppCalendar}/>
       <Route  path="/login" component={AppLogin}   />
       </Switch>
     </Router>
