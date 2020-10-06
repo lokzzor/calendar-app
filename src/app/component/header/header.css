@@ -55,3 +55,15 @@
   text-align: center;
   justify-content: flex-end;
 }
+.link{
+  text-decoration: none; color: white; line-height: 0;
+}
+.menu{
+  color: white;
+  display: grid;
+  grid-template-columns: 125px 125px 150px;
+  align-items: center;
+  font-size: 21px;
+}
+.menu .MuiIconButton-root{padding: 9px !important;}
+.menu-icon{font-size:1.9rem !important;}

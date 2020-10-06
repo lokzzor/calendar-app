@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { IconButton } from '@material-ui/core/';
 import { AccountCircle } from '@material-ui/icons';
 import EventNoteIcon from '@material-ui/icons/EventNote';
+import NewReleasesIcon from '@material-ui/icons/NewReleases';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 
 export default class AppHeader extends Component {
     render() {
@@ -15,9 +17,26 @@ export default class AppHeader extends Component {
                         <Link to='/' className="navbar-logo">
                             <EventNoteIcon />&nbsp;React Calendar
                         </Link>
-                        <IconButton color="inherit">
-                            <Link style={{ textDecoration: "none", color: "white", lineHeight: "0" }} to="/login"><AccountCircle className="navicons" style={{ fontSize: "2.05rem" }} /></Link>
-                        </IconButton>
+                        <div className="menu">
+                            <div>
+                                <IconButton color="inherit">
+                                    <Link className="link" to="/login"><NewReleasesIcon className="navicons menu-icon"/></Link>
+                                </IconButton>
+                                <Link className="link" to="/login">News</Link>
+                            </div>
+                            <div>
+                                <IconButton color="inherit">
+                                    <Link className="link" to="/login"><EventAvailableIcon className="navicons menu-icon" /></Link>
+                                </IconButton>
+                                <Link className="link" to="/login">Event</Link>
+                            </div>
+                            <div>
+                                <IconButton color="inherit">
+                                    <Link className="link" to="/login"><AccountCircle className="navicons menu-icon" /></Link>
+                                </IconButton>
+                                <Link className="link" to="/login">Account</Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </>
