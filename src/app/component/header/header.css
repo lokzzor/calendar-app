@@ -17,13 +17,13 @@
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  padding-top: 0.5%;
 }
 
 .container {
   z-index: 1;
   width: 100%;
-  max-width: 1650px;
+  max-width: 1600px;
   margin-right: auto;
   margin-left: auto;
   padding-right: 1%;
@@ -63,7 +63,11 @@
   display: grid;
   grid-template-columns: 125px 125px 150px;
   align-items: center;
-  font-size: 21px;
+  font-size: 20px;
 }
 .menu .MuiIconButton-root{padding: 9px !important;}
-.menu-icon{font-size:1.9rem !important;}
+.menu-icon{font-size:1.8rem !important;}
+.menu div{
+  display: flex;
+  align-items: center;
+}

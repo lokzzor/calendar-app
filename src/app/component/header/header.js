@@ -15,7 +15,7 @@ export default class AppHeader extends Component {
                 <div className="navbar">
                     <div className="navbar-container container">
                         <Link to='/' className="navbar-logo">
-                            <EventNoteIcon />&nbsp;React Calendar
+                            <EventNoteIcon />&nbsp;<p style={{paddingBottom: "2%"}}>React Calendar</p>
                         </Link>
                         <div className="menu">
                             <div>
