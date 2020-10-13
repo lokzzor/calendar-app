@@ -10,8 +10,8 @@ function App() {
     <Router>
       <AppHeader/>
       <Switch>
-      <Route  path='/' exact component={AppCalendar}/>
-      <Route  path="/login" component={AppLogin}   />
+        <Route  path='/' exact component={AppCalendar}/>
+        <Route  path="/login" component={AppLogin}   />
       </Switch>
     </Router>
   );
