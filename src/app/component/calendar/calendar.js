@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
 import './calendar.css';
 
-import { Link } from 'react-router-dom';
 import ListItem from "@material-ui/core/ListItem";
+
+import ScrollableAnchor from 'react-scrollable-anchor'
+import { configureAnchors } from 'react-scrollable-anchor'
 
 import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 import axios from 'axios';
 import moment from 'moment';
 
 export default class AppCalendar extends Component {
+    componentWillMount() {
+        configureAnchors({offset: -95, scrollDuration: 200})
+    }
     state = {
         currentMonth: moment(new Date()).format("YYYY-MM-DD"),
         selectedDate: moment(new Date()).format("YYYY-MM-DD"),
@@ -22,7 +28,7 @@ export default class AppCalendar extends Component {
             console.log(resp.data);
         }); */
         return (
-            <div className="header-calendar box-radius">
+            <div className="header-calendar box-radius-top">
                 <div className="header-room">
 
                 </div>
@@ -123,26 +129,43 @@ export default class AppCalendar extends Component {
                 <div className="sidenav box-radius">
                     <h2 className="titular">MENU</h2>
                     <ul className="header-menu horizontal-list">
-                        <ListItem className="side-button" button component={Link} to="/">
+                        <ListItem className="side-button" button>
                             <HomeIcon className="icon-button"/><p className="title-menu">Home</p>
                         </ListItem>
-                        <ListItem className="side-button" button component={Link} to="/">
-                            <EventIcon className="icon-button"/><p className="title-menu">Calendar</p>
-                        </ListItem>
-                        <ListItem className="side-button" button component={Link} to="/">
+                        <a href='#calendar'>
+                            <ListItem className="side-button" button>
+                                <EventIcon className="icon-button"/><p className="title-menu">Calendar</p>
+                            </ListItem>
+                        </a>
+                        <a href='#news'>
+                        <ListItem className="side-button" button>
                             <MenuBookIcon className="icon-button"/><p className="title-menu">News</p>
                         </ListItem>
-                        <ListItem className="side-button" button component={Link} to="/">
+                        </a>
+                        <ListItem className="side-button" button>
                             <HomeIcon className="icon-button"/><p className="title-menu">Settings</p>
                         </ListItem>
-                        <ListItem className="side-button" button component={Link} to="/">
+                        <ListItem className="side-button" button>
                             <HomeIcon className="icon-button"/><p className="title-menu">Settings</p>
                         </ListItem>
-
                     </ul>
                 </div>
                 <div className="small-calendar box-radius">
-                calendar
+                    <div className="sidenav box-radius">
+                        <h2 className="titular">{moment(this.state.currentMonth).format('dddd')}</h2>
+                    </div>
+                    <div className="small-header-cal-date">
+                        {moment(this.state.currentMonth).format('DD')}
+                    </div>
+                    <div className="small-header-cal-eventlist">
+                        <p>Curent Event:</p>
+                        list
+                    </div>
+                    <div className="small-header-cal-eventadd">
+                        <ListItem className="side-button" button>
+                            <p className="title-menu add-func-event"><>Create an Event</> <AddCircleIcon style={{marginLeft: "3%"}} /></p>
+                        </ListItem>
+                    </div>
                 </div>
                 <div className="weather box-radius">
                 weather
@@ -156,14 +179,18 @@ export default class AppCalendar extends Component {
                 <div className="room-event box-radius">
                 room-event
                 </div>
-                <div className="calendar box-radius">
+                <ScrollableAnchor id={'calendar'}>
+                <div className="calendar box-radius-top">
                     {this.renderHeader()}
                     {this.renderDays()}
                     {this.renderCells()}                
                 </div>
+                </ScrollableAnchor>
+                <ScrollableAnchor id={'news'}>
                 <div className="news box-radius">
                 news
                 </div>
+                </ScrollableAnchor>
             </div>
         )
     }

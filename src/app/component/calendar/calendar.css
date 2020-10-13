@@ -1,10 +1,10 @@
 .main-container {
   font-family: "Ubuntu", sans-serif;
-  width: 77%;
+  width: 74%;
   margin: 6em auto;
 
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-columns: 1.1fr 1.9fr minmax(5em, 2fr);
   grid-auto-rows: minmax(200px, auto);
   grid-gap: 2em;
 }
@@ -13,13 +13,20 @@
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0.6em;
 }
+.box-radius-top {
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  border-top-right-radius: 0.6em;
+  border-top-left-radius: 0.6em;
+}
 /* SIDE */
 
 .sidenav {
   background: #394264;
 }
 .sidenav .titular {
-  background: #1c223754;
+  background: #3468af;
+  letter-spacing: 2px;
 }
 .titular {
   display: block;
@@ -48,6 +55,8 @@
   margin-top: 1%;
   font-family: "Ubuntu", sans-serif;
 }
+.MuiListItem-gutters {
+}
 /* End SIDE */
 
 /* Calendar */
@@ -63,7 +72,7 @@
   padding: 0.8em 0;
   text-align: center;
   border-bottom: 1px solid #eee;
-  background: #394264;
+  background: #3468af;
 }
 .row {
   margin: 0;
@@ -80,13 +89,11 @@
   grid-auto-rows: 50px;
   grid-gap: 2em;
   font-family: "Ubuntu", sans-serif;
-  background: #394264;
+  background: #3468af;
 }
-.header-room{
-
+.header-room {
 }
-.header-func{
-  
+.header-func {
 }
 .col {
   flex-grow: 1;
@@ -95,6 +102,7 @@
   padding: 0.6% 0%;
   cursor: default;
   font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
 }
 .calendar .body .row {
   border-bottom: 1px solid #eee;
@@ -158,11 +166,40 @@
 /*  */
 
 .small-calendar {
-  background: #394264;
+  background: #3468af;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 77%;
+}
+.small-header-cal-date {
+  margin: 0 auto;
+  font-family: "Ubuntu", sans-serif;
+  margin-top: 1%;
+  font-size: 7.7rem;
+}
+.small-header-cal-eventlist {
+  font-size: 14px;
+  padding: 0 0 6% 8%;
+}
+.small-header-cal-eventadd {
+  display: flex;
+  width: 100%;
+}
+.add-func-event{
+  margin: 0;
+  font-size: 17px;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* End Calendar*/
 .weather {
   background: #394264;
+  width: 122%;
+  margin-left: -22%;
 }
 .news {
   grid-column: 1/4;
