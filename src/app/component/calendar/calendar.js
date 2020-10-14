@@ -23,6 +23,11 @@ export default class AppCalendar extends Component {
         selectedDate: moment(new Date()).format("YYYY-MM-DD"),
         URL: "http://localhost:8080"
     };
+    getWeather(){
+        axios.get('https://api.openweathermap.org/data/2.5/forecast?q=Dubna&units=metric&appid=c69d269bf7ae9f77f71e2b6ef4124c1e').then(resp => {
+            console.log(resp.data);
+        });
+    }
     renderHeader() {
 /*         axios.get(this.state.URL+'/api/get/room').then(resp => {
             console.log(resp.data);
@@ -168,7 +173,13 @@ export default class AppCalendar extends Component {
                     </div>
                 </div>
                 <div className="weather box-radius">
-                weather
+                    {this.getWeather()}
+                    <div className="sidenav box-radius">
+                        <h2 className="titular">Dubna Weather Forecast</h2>
+                    </div>
+                    <div className="small-header-cal-date">
+                        13
+                    </div>
                 </div>
                 <div className="cloud-service box-radius">
                 cloud-service

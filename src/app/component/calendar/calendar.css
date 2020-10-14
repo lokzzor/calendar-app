@@ -173,10 +173,11 @@
   width: 77%;
 }
 .small-header-cal-date {
-  margin: 0 auto;
+  margin: 3% auto;
   font-family: "Ubuntu", sans-serif;
-  margin-top: 1%;
-  font-size: 7.7rem;
+  font-size: 7.5rem;
+  color: white;
+  text-align: center;
 }
 .small-header-cal-eventlist {
   font-size: 14px;
