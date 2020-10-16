@@ -1,33 +1,39 @@
 .main-container {
   font-family: "Ubuntu", sans-serif;
-  width: 74%;
+  width: 70%;
   margin: 6em auto;
-
   display: grid;
-  grid-template-columns: 1.1fr 1.9fr minmax(5em, 2fr);
+  grid-template-columns: 1fr 2fr minmax(5em, 2fr);
   grid-auto-rows: minmax(200px, auto);
   grid-gap: 2em;
 }
+
 .box-radius {
-  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
-    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0.6em;
 }
+
 .box-radius-top {
-  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
-    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   border-top-right-radius: 0.6em;
   border-top-left-radius: 0.6em;
 }
+
 /* SIDE */
+
+ul {
+  padding: 4% 0 !important;
+}
 
 .sidenav {
   background: #394264;
 }
+
 .sidenav .titular {
   background: #3468af;
   letter-spacing: 2px;
 }
+
 .titular {
   display: block;
   line-height: 60px;
@@ -37,17 +43,20 @@
   border-top-right-radius: 5px;
   color: white;
 }
+
 .side-button {
   margin: 0;
   padding-left: 0;
   padding-top: 5% !important;
   padding-bottom: 5% !important;
 }
+
 .icon-button {
   width: 2em !important;
   height: 1.1em !important;
   color: white;
 }
+
 .title-menu {
   padding-left: 5%;
   font-size: 15px;
@@ -55,8 +64,9 @@
   margin-top: 1%;
   font-family: "Ubuntu", sans-serif;
 }
-.MuiListItem-gutters {
-}
+
+.MuiListItem-gutters {}
+
 /* End SIDE */
 
 /* Calendar */
@@ -65,6 +75,7 @@
   grid-column: 1/4;
   background: #394264;
 }
+
 .calendar .days {
   text-transform: uppercase;
   font-weight: 400;
@@ -74,6 +85,7 @@
   border-bottom: 1px solid #eee;
   background: #3468af;
 }
+
 .row {
   margin: 0;
   padding: 0;
@@ -83,6 +95,7 @@
   flex-wrap: wrap;
   width: 100%;
 }
+
 .header-calendar {
   display: grid;
   grid-template-columns: 4fr 1fr;
@@ -91,10 +104,11 @@
   font-family: "Ubuntu", sans-serif;
   background: #3468af;
 }
-.header-room {
-}
-.header-func {
-}
+
+.header-room {}
+
+.header-func {}
+
 .col {
   flex-grow: 1;
   flex-basis: 0;
@@ -104,19 +118,23 @@
   font-family: "Ubuntu", sans-serif;
   font-size: 14px;
 }
+
 .calendar .body .row {
   border-bottom: 1px solid #eee;
 }
+
 .calendar .body .col {
   flex-grow: 0;
   flex-basis: calc(100% / 7);
   width: calc(100% / 7);
   color: black;
 }
+
 .calendar .body .disabled {
   color: #ccc;
   pointer-events: none;
 }
+
 .calendar .body .cell {
   position: relative;
   height: 7em;
@@ -124,9 +142,9 @@
   overflow: hidden;
   cursor: pointer;
   background: #fff;
-
   transition: 0.25s ease-out;
 }
+
 .calendar .body .cell .number {
   position: absolute;
   font-size: 85%;
@@ -135,6 +153,7 @@
   right: 1.2em;
   font-weight: 700;
 }
+
 .calendar .body .cell .bg {
   font-weight: 700;
   line-height: 1;
@@ -148,21 +167,25 @@
   letter-spacing: -0.07em;
   font-family: "Ubuntu", sans-serif;
 }
+
 /* add cal css */
+
 .calendar .body .cell:hover {
   background: #f9f9f9;
   transition: 0.5s ease-out;
 }
+
 .calendar .body .selected {
   border-left: 10px solid transparent;
   border-image: linear-gradient(45deg, #0124e4ba 0%, #53cbf1 40%);
   border-image-slice: 1;
 }
-.calendar .body .cell:hover .bg,
-.calendar .body .selected .bg {
+
+.calendar .body .cell:hover .bg, .calendar .body .selected .bg {
   opacity: 0.15;
   transition: 0.5s ease-in;
 }
+
 /*  */
 
 .small-calendar {
@@ -172,46 +195,113 @@
   color: white;
   width: 77%;
 }
+
 .small-header-cal-date {
   margin: 3% auto;
   font-family: "Ubuntu", sans-serif;
-  font-size: 7.5rem;
+  font-size: 7rem;
   color: white;
   text-align: center;
 }
+
 .small-header-cal-eventlist {
-  font-size: 14px;
   padding: 0 0 6% 8%;
 }
+
 .small-header-cal-eventadd {
   display: flex;
   width: 100%;
 }
-.add-func-event{
+
+.add-func-event {
   margin: 0;
-  font-size: 17px;
+  font-size: 16px;
   width: 100%;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* End Calendar*/
-.weather {
-  background: #394264;
-  width: 122%;
-  margin-left: -22%;
+
+.title-listevent {
+  font-size: 16px;
 }
+
+.color-with-svg {
+  list-style: none;
+}
+
+.color-with-svg li::before {
+  list-style: none;
+  content: "";
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='red'/%3E%3C/svg%3E");
+  background-size: 38%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  position: relative;
+  top: 0.08rem;
+  margin: 2% 0 0 7%;
+  font-size: 15px;
+}
+
+/* End Calendar*/
+
+/* Weather */
+
+.weather {
+  background: white;
+  width: 124%;
+  margin-left: -24%;
+}
+
+.flex-weather {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.flex-2side {
+  display: flex;
+  justify-content: space-between;
+  height: 60%;
+}
+
+.flex-2day {
+  display: flex;
+  height: 40%;
+  padding: 2% 6%;
+}
+
+.city {}
+
+.parameter {
+  display: flex;
+  flex-direction: column;
+  width: 63%;
+}
+
+.degree-icon {
+  width: 36%;
+}
+
+/*  */
+
 .news {
   grid-column: 1/4;
   background: #394264;
 }
+
 .chart-state {
   background: #394264;
 }
+
 .cloud-service {
   background: #394264;
 }
+
 .room-event {
   background: #394264;
 }

@@ -10,21 +10,23 @@ import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 
 import axios from 'axios';
 import moment from 'moment';
 
 export default class AppCalendar extends Component {
-    componentWillMount() {
-        configureAnchors({offset: -95, scrollDuration: 200})
-    }
+    componentWillMount() { configureAnchors({offset: -95, scrollDuration: 200})}
     state = {
         currentMonth: moment(new Date()).format("YYYY-MM-DD"),
         selectedDate: moment(new Date()).format("YYYY-MM-DD"),
         URL: "http://localhost:8080"
     };
     getWeather(){
-        axios.get('https://api.openweathermap.org/data/2.5/forecast?q=Dubna&units=metric&appid=c69d269bf7ae9f77f71e2b6ef4124c1e').then(resp => {
+        const api_key='8dd1a3acaaf643cc8c082750201610';
+        const id_key='Dubna';
+        axios.get('https://api.weatherapi.com/v1/forecast.json?key='+api_key+'&q='+id_key+'&days=3').then(resp => {
             console.log(resp.data);
         });
     }
@@ -148,10 +150,10 @@ export default class AppCalendar extends Component {
                         </ListItem>
                         </a>
                         <ListItem className="side-button" button>
-                            <HomeIcon className="icon-button"/><p className="title-menu">Settings</p>
+                            <SettingsApplicationsIcon className="icon-button"/><p className="title-menu">Settings</p>
                         </ListItem>
                         <ListItem className="side-button" button>
-                            <HomeIcon className="icon-button"/><p className="title-menu">Settings</p>
+                            <ContactSupportIcon className="icon-button"/><p className="title-menu">Tutorials</p>
                         </ListItem>
                     </ul>
                 </div>
@@ -163,8 +165,10 @@ export default class AppCalendar extends Component {
                         {moment(this.state.currentMonth).format('DD')}
                     </div>
                     <div className="small-header-cal-eventlist">
-                        <p>Curent Event:</p>
-                        list
+                        <p className="title-listevent">Curent Event:</p>
+                        <ol className="color-with-svg">
+                            <li>There are no scheduled events today</li>
+                        </ol>
                     </div>
                     <div className="small-header-cal-eventadd">
                         <ListItem className="side-button" button>
@@ -173,12 +177,33 @@ export default class AppCalendar extends Component {
                     </div>
                 </div>
                 <div className="weather box-radius">
-                    {this.getWeather()}
-                    <div className="sidenav box-radius">
+{/*                     {this.getWeather()}
+ */}{/*                     <div className="sidenav box-radius">
                         <h2 className="titular">Dubna Weather Forecast</h2>
                     </div>
                     <div className="small-header-cal-date">
                         13
+                    </div> */}
+                    <div className="flex-weather">
+                        <div className="flex-2side">
+                            <div className="parameter">
+                                <div>Dubna</div>
+                                <div>Time</div>
+                                <div>rain 49
+                                ....</div>
+                            </div>
+                            <div className="degree-icon">
+                                05 degree
+                            </div>
+                        </div>
+                        <div className="flex-2day">
+                            <div>
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="cloud-service box-radius">
