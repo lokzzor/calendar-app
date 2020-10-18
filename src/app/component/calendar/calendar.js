@@ -12,6 +12,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
 import axios from 'axios';
 import moment from 'moment';
@@ -177,8 +178,9 @@ export default class AppCalendar extends Component {
                     </div>
                 </div>
                 <div className="weather box-radius">
-{/*                     {this.getWeather()}
- */}{/*                     <div className="sidenav box-radius">
+{/*                 <img src="https://iamsainikhil.com/weather-react/weather-backgrounds/cloudy-night.jpg" alt="clear day" />
+ */}                    {this.getWeather()}
+ {/*                     <div className="sidenav box-radius">
                         <h2 className="titular">Dubna Weather Forecast</h2>
                     </div>
                     <div className="small-header-cal-date">
@@ -187,10 +189,14 @@ export default class AppCalendar extends Component {
                     <div className="flex-weather">
                         <div className="flex-2side">
                             <div className="parameter">
-                                <div>Dubna</div>
-                                <div>Time</div>
-                                <div>rain 49
-                                ....</div>
+                                <div className="city-info">
+                                    <p className="cityinf1">Dubna, Moscow region, Russia</p>
+                                    <p className="cityinf2">{moment().format("MMMM Do YYYY | HH:mm")} <QueryBuilderIcon /></p>
+                                </div>
+                                <div className="info-deg">
+                                    <div>rain</div> 
+                                    <div>1</div>
+                                </div>
                             </div>
                             <div className="degree-icon">
                                 05 degree

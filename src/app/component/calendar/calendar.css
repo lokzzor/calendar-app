@@ -275,16 +275,41 @@ ul {
   padding: 2% 6%;
 }
 
-.city {}
+.city-info { 
+  display: block;
+  margin: 0;
+  color: red;
+  padding: 3% 0% 0% 7%;
+  letter-spacing: 2px;
+  font-weight: bold;
+  line-height: 1.6;
+}
+.cityinf1{
+  font-size: 1.23em;    letter-spacing: .05em;
+  font-family: -apple-system,BlinkMacSystemFont,"SpaceGrotesk","Lato","Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.cityinf2{
+  align-items: center;
+  font-size: 1em;
+  font: normal 125%/1.4 "SpaceGrotesk","Lato","Open Sans","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial",sans-serif;
+  display: flex;
+  letter-spacing: .05em;
+}
+.info-deg{
+  display: flex;
+  padding: 9% 0% 0% 10%;
+
+}
 
 .parameter {
   display: flex;
   flex-direction: column;
-  width: 63%;
+  width: 68%;
 }
 
 .degree-icon {
-  width: 36%;
+  width: 32%;
+  background: yellow;
 }
 
 /*  */
