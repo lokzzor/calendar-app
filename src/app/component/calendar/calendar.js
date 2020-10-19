@@ -132,10 +132,15 @@ export default class AppCalendar extends Component {
         });
     };
     render() {
+        var imgUrl="https://iamsainikhil.com/weather-react/weather-backgrounds/cloudy-day.jpg";
+        var divStyle = {
+            backgroundImage: 'url(' + imgUrl + ')',
+            backgroundSize: "cover"
+        }
         return (
             <div className="main-container">
                 <div className="sidenav box-radius">
-                    <h2 className="titular">MENU</h2>
+                    <h2 className="titular cursor">MENU</h2>
                     <ul className="header-menu horizontal-list">
                         <ListItem className="side-button" button>
                             <HomeIcon className="icon-button"/><p className="title-menu">Home</p>
@@ -160,13 +165,13 @@ export default class AppCalendar extends Component {
                 </div>
                 <div className="small-calendar box-radius">
                     <div className="sidenav box-radius">
-                        <h2 className="titular">{moment(this.state.currentMonth).format('dddd')}</h2>
+                        <h2 className="titular cursor">{moment(this.state.currentMonth).format('dddd')}</h2>
                     </div>
-                    <div className="small-header-cal-date">
+                    <div className="small-header-cal-date cursor">
                         {moment(this.state.currentMonth).format('DD')}
                     </div>
                     <div className="small-header-cal-eventlist">
-                        <p className="title-listevent">Curent Event:</p>
+                        <p className="title-listevent cursor">Curent Event:</p>
                         <ol className="color-with-svg">
                             <li>There are no scheduled events today</li>
                         </ol>
@@ -177,7 +182,7 @@ export default class AppCalendar extends Component {
                         </ListItem>
                     </div>
                 </div>
-                <div className="weather box-radius">
+                <div className="weather box-radius" style={divStyle}>
 {/*                 <img src="https://iamsainikhil.com/weather-react/weather-backgrounds/cloudy-night.jpg" alt="clear day" />
  */}                    {this.getWeather()}
  {/*                     <div className="sidenav box-radius">
@@ -190,8 +195,8 @@ export default class AppCalendar extends Component {
                         <div className="flex-2side">
                             <div className="parameter">
                                 <div className="city-info">
-                                    <p className="cityinf1">Dubna, Moscow region, Russia</p>
-                                    <p className="cityinf2">{moment().format("MMMM Do YYYY | HH:mm")} <QueryBuilderIcon /></p>
+                                    <p className="cityinf1 cursor">Dubna, Moscow region, Russia</p>
+                                    <p className="cityinf2 cursor">{moment().format("MMMM Do YYYY | HH:mm")} <QueryBuilderIcon style={{ fontSize: "1em", marginLeft: "0.2em"}}/></p>
                                 </div>
                                 <div className="info-deg">
                                     <div>rain</div> 

@@ -278,7 +278,7 @@ ul {
 .city-info { 
   display: block;
   margin: 0;
-  color: red;
+  color: white;
   padding: 3% 0% 0% 7%;
   letter-spacing: 2px;
   font-weight: bold;
@@ -291,7 +291,7 @@ ul {
 .cityinf2{
   align-items: center;
   font-size: 1em;
-  font: normal 125%/1.4 "SpaceGrotesk","Lato","Open Sans","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font: normal 100%/1.4 "SpaceGrotesk","Lato","Open Sans","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial",sans-serif;
   display: flex;
   letter-spacing: .05em;
 }
@@ -309,9 +309,10 @@ ul {
 
 .degree-icon {
   width: 32%;
-  background: yellow;
 }
-
+.cursor{
+  cursor:default;
+}
 /*  */
 
 .news {
