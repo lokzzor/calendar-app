@@ -25,11 +25,12 @@ export default class AppCalendar extends Component {
         URL: "http://localhost:8080"
     };
     getWeather(){
-        const api_key='8dd1a3acaaf643cc8c082750201610';
+        const api_key='0b603933f5889e3b1db0bec7cfc4402c';
         const id_key='Dubna';
-        axios.get('https://api.weatherapi.com/v1/forecast.json?key='+api_key+'&q='+id_key+'&days=3').then(resp => {
+        axios.get('http://api.weatherstack.com/current?access_key='+api_key+'&query='+id_key+'&days=3').then(resp => {
             console.log(resp.data);
         });
+        
     }
     renderHeader() {
 /*         axios.get(this.state.URL+'/api/get/room').then(resp => {
