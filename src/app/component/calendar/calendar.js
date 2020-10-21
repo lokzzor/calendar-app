@@ -24,14 +24,24 @@ export default class AppCalendar extends Component {
     state = {
         currentMonth: moment(new Date()).format("YYYY-MM-DD"),
         selectedDate: moment(new Date()).format("YYYY-MM-DD"),
-        URL: "http://localhost:8080"
+        URL: "http://localhost:8080",
+        weather:{}
     };
     getWeather(){
-        const api_key='0b603933f5889e3b1db0bec7cfc4402c';
+        const api_key='596876ae90ac6935eb72f9671488da95';
         const id_key='Dubna';
-        axios.get('http://api.weatherstack.com/current?access_key='+api_key+'&query='+id_key)
+        axios.get('https://api.openweathermap.org/data/2.5/weather?q='+id_key+'&appid='+api_key+'&units=metric')
             .then(resp => {
-                console.log(resp.data);
+                this.setState.weather=Object.create(null);
+                this.setState.weather.cloud=resp.data.clouds.all;
+                this.setState.weather.wind=resp.data.wind.speed;
+                this.setState.weather.temp=Math.round(resp.data.main.temp);
+                this.setState.weather.tempfeels_like=Math.round(resp.data.main.feels_like);
+                this.setState.weather.vlag=resp.data.main.humidity;
+                this.setState.weather.descrip=resp.data.weather[0].description;
+                this.setState.weather.main=resp.data.weather[0].main;
+                this.setState.weather.icon=resp.data.weather[0].icon;
+                console.log(this.setState.weather);
             })
             .catch(err => {
                 // Handle Error Here
@@ -190,14 +200,7 @@ export default class AppCalendar extends Component {
                     </div>
                 </div>
                 <div className="weather box-radius" style={divStyle}>
-{/*                 <img src="https://iamsainikhil.com/weather-react/weather-backgrounds/cloudy-night.jpg" alt="clear day" />
- */}                    {this.getWeather()}
- {/*                     <div className="sidenav box-radius">
-                        <h2 className="titular">Dubna Weather Forecast</h2>
-                    </div>
-                    <div className="small-header-cal-date">
-                        13
-                    </div> */}
+                  {this.getWeather()}
                     <div className="flex-weather">
                         <div className="flex-2side">
                             <div className="parameter">
@@ -207,11 +210,10 @@ export default class AppCalendar extends Component {
                                 </div>
                                 <div className="info-deg">
                                     <div className="cloudicon">
-                                        <img src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0021_cloudy_with_sleet.png"></img>
                                         tezt
                                     </div> 
                                     <div className="temp">
-                                        1&deg;C
+                                    {this.state.weather.temp}&deg;C
                                     </div>
                                 </div>
                             </div>
