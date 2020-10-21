@@ -17,6 +17,8 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import axios from 'axios';
 import moment from 'moment';
 
+
+
 export default class AppCalendar extends Component {
     componentWillMount() { configureAnchors({offset: -95, scrollDuration: 200})}
     state = {
@@ -27,10 +29,14 @@ export default class AppCalendar extends Component {
     getWeather(){
         const api_key='0b603933f5889e3b1db0bec7cfc4402c';
         const id_key='Dubna';
-        axios.get('http://api.weatherstack.com/current?access_key='+api_key+'&query='+id_key+'&days=3').then(resp => {
-            console.log(resp.data);
-        });
-        
+        axios.get('http://api.weatherstack.com/current?access_key='+api_key+'&query='+id_key)
+            .then(resp => {
+                console.log(resp.data);
+            })
+            .catch(err => {
+                // Handle Error Here
+                console.error(err);
+            });
     }
     renderHeader() {
 /*         axios.get(this.state.URL+'/api/get/room').then(resp => {
@@ -200,12 +206,22 @@ export default class AppCalendar extends Component {
                                     <p className="cityinf2 cursor">{moment().format("MMMM Do YYYY | HH:mm")} <QueryBuilderIcon style={{ fontSize: "1em", marginLeft: "0.2em"}}/></p>
                                 </div>
                                 <div className="info-deg">
-                                    <div>rain</div> 
-                                    <div>1</div>
+                                    <div className="cloudicon">
+                                        <img src="https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0021_cloudy_with_sleet.png"></img>
+                                        tezt
+                                    </div> 
+                                    <div className="temp">
+                                        1&deg;C
+                                    </div>
                                 </div>
                             </div>
                             <div className="degree-icon">
-                                05 degree
+                                <div>
+                                </div>
+                                <div>
+                                </div>
+                                <div>
+                                </div>
                             </div>
                         </div>
                         <div className="flex-2day">

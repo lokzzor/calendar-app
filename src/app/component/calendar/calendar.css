@@ -279,7 +279,7 @@ ul {
   display: block;
   margin: 0;
   color: white;
-  padding: 3% 0% 0% 7%;
+  padding: 7% 0% 0% 8%;
   letter-spacing: 2px;
   font-weight: bold;
   line-height: 1.6;
@@ -298,6 +298,16 @@ ul {
 .info-deg{
   display: flex;
   padding: 9% 0% 0% 10%;
+
+}
+.temp{
+  margin: 0% auto;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 6rem;
+    color: white;
+    text-align: center;
+}
+.cloudicon{
 
 }
 
@@ -321,7 +331,7 @@ ul {
 }
 
 .chart-state {
-  background: #394264;
+  background: #EEE;
 }
 
 .cloud-service {
@@ -329,7 +339,7 @@ ul {
 }
 
 .room-event {
-  background: #394264;
+  background: #EEE;
 }
 
 /*
