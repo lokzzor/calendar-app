@@ -28,25 +28,9 @@ export default class AppCalendar extends Component {
         weather:{}
     };
     getWeather(){
-        const api_key='596876ae90ac6935eb72f9671488da95';
-        const id_key='Dubna';
-        axios.get('https://api.openweathermap.org/data/2.5/weather?q='+id_key+'&appid='+api_key+'&units=metric')
-            .then(resp => {
-                this.setState.weather=Object.create(null);
-                this.setState.weather.cloud=resp.data.clouds.all;
-                this.setState.weather.wind=resp.data.wind.speed;
-                this.setState.weather.temp=Math.round(resp.data.main.temp);
-                this.setState.weather.tempfeels_like=Math.round(resp.data.main.feels_like);
-                this.setState.weather.vlag=resp.data.main.humidity;
-                this.setState.weather.descrip=resp.data.weather[0].description;
-                this.setState.weather.main=resp.data.weather[0].main;
-                this.setState.weather.icon=resp.data.weather[0].icon;
-                console.log(this.setState.weather);
-            })
-            .catch(err => {
-                // Handle Error Here
-                console.error(err);
-            });
+        axios.get(this.state.URL+'/api/get/weather').then(resp => {
+            console.log(resp.data);
+        }); 
     }
     renderHeader() {
 /*         axios.get(this.state.URL+'/api/get/room').then(resp => {
