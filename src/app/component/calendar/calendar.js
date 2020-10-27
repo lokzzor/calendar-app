@@ -20,7 +20,10 @@ import moment from 'moment';
 
 
 export default class AppCalendar extends Component {
-    componentWillMount() { configureAnchors({offset: -95, scrollDuration: 200})}
+    componentDidMount() { 
+        configureAnchors({offset: -95, scrollDuration: 200});
+        this.getWeather();
+    }
     state = {
         currentMonth: moment(new Date()).format("YYYY-MM-DD"),
         selectedDate: moment(new Date()).format("YYYY-MM-DD"),
@@ -30,6 +33,7 @@ export default class AppCalendar extends Component {
     getWeather(){
         axios.get(this.state.URL+'/api/get/weather').then(resp => {
             console.log(resp.data);
+            this.setState(state=>({ weather:resp.data }));
         }); 
     }
     renderHeader() {
@@ -184,7 +188,6 @@ export default class AppCalendar extends Component {
                     </div>
                 </div>
                 <div className="weather box-radius" style={divStyle}>
-                  {this.getWeather()}
                     <div className="flex-weather">
                         <div className="flex-2side">
                             <div className="parameter">
@@ -194,7 +197,7 @@ export default class AppCalendar extends Component {
                                 </div>
                                 <div className="info-deg">
                                     <div className="cloudicon">
-                                        tezt
+                                        <img src={this.state.URL+this.state.weather.icon_url} style={{ width: "84%"}} alt="alternatetext"/>
                                     </div> 
                                     <div className="temp">
                                     {this.state.weather.temp}&deg;C
