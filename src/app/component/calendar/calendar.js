@@ -137,7 +137,7 @@ export default class AppCalendar extends Component {
         });
     };
     render() {
-        var imgUrl="https://iamsainikhil.com/weather-react/weather-backgrounds/cloudy-day.jpg";
+        var imgUrl=this.state.URL+this.state.weather.background;
         var divStyle = {
             backgroundImage: 'url(' + imgUrl + ')',
             backgroundSize: "cover"
@@ -188,40 +188,27 @@ export default class AppCalendar extends Component {
                     </div>
                 </div>
                 <div className="weather box-radius" style={divStyle}>
-                    <div className="flex-weather">
-                        <div className="flex-2side">
-                            <div className="parameter">
-                                <div className="city-info">
-                                    <p className="cityinf1 cursor">Dubna, Moscow region, Russia</p>
-                                    <p className="cityinf2 cursor">{moment().format("MMMM Do YYYY | HH:mm")} <QueryBuilderIcon style={{ fontSize: "1em", marginLeft: "0.2em"}}/></p>
-                                </div>
-                                <div className="info-deg">
-                                    <div className="cloudicon">
-                                        <img src={this.state.URL+this.state.weather.icon_url} style={{ width: "84%"}} alt="alternatetext"/>
-                                    </div> 
-                                    <div className="temp">
-                                    {this.state.weather.temp}&deg;C
-                                    </div>
+                    <div className="flex-2side">
+                        <div className="parameter">
+                            <div className="city-info">
+                                <p className="cityinf1 cursor">Dubna, Moscow region, Russia</p>
+                                <p className="cityinf2 cursor">{moment().format("MMMM Do YYYY | HH:mm")} <QueryBuilderIcon style={{ fontSize: "1em", marginLeft: "0.2em"}}/></p>
+                            </div>
+                            <div className="info-deg cursor">
+                                <div className="cloudicon">
+                                    <img src={this.state.URL+this.state.weather.icon_url} style={{ width: "8em"}} alt="alternatetext"/>
+                                </div> 
+                                <div className="temp cursor">
+                                {this.state.weather.temp}&deg;C
                                 </div>
                             </div>
-                            <div className="degree-icon">
-                                <div>
-                                </div>
-                                <div>
-                                </div>
-                                <div>
-                                </div>
-                            </div>
+                            <h2 className="flex-2day cursor">{this.state.weather.descrip}</h2>
                         </div>
-                        <div className="flex-2day">
-                            <div>
-
-                            </div>
-                            <div>
-
-                            </div>
+                        <div className="icondeg cursor">
+                            asdasd
                         </div>
                     </div>
+
                 </div>
                 <div className="cloud-service box-radius">
                 cloud-service

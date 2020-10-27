@@ -257,24 +257,28 @@ ul {
   margin-left: -24%;
 }
 
-.flex-weather {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+.flex-weather {}
 
 .flex-2side {
   display: flex;
-  justify-content: space-between;
-  height: 60%;
 }
 
 .flex-2day {
   display: flex;
-  height: 40%;
-  padding: 2% 6%;
+  font-size: 36px;
+  margin: -4% 0% 0% 24%;
+  text-transform: capitalize;
+  justify-content: center;
+  color: white;
+  text-shadow: 3px 5px 5px #111714, 3px 0px 6px #1c2237;
 }
+.icondeg{
+  display: flex;
+    justify-content: center;
+    align-items: center;
 
+    flex-direction: column;
+}
 .city-info { 
   display: block;
   margin: 0;
@@ -297,8 +301,7 @@ ul {
 }
 .info-deg{
   display: flex;
-  padding: 9% 0% 0% 10%;
-
+  padding: 6% 0% 0% 14%;
 }
 .temp{
   margin: 0% auto;
@@ -307,18 +310,10 @@ ul {
     color: white;
     text-align: center;
 }
-.cloudicon{
-
-}
-
 .parameter {
   display: flex;
   flex-direction: column;
-  width: 68%;
-}
-
-.degree-icon {
-  width: 32%;
+  width: 66%; 
 }
 .cursor{
   cursor:default;
