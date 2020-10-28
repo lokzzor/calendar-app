@@ -205,11 +205,27 @@ export default class AppCalendar extends Component {
                             <h2 className="flex-2day cursor">{this.state.weather.descrip}</h2>
                         </div>
                         <div className="icondeg cursor">
-                            asdasd
+                            <div>
+                                <img src={this.state.URL+this.state.weather.cloudicon} className="iconsize" alt="alternatetext"/>
+                                <div className="iconsizetext">{this.state.weather.clouds}%</div>
+                            </div>
+                            <div>
+                                <img src={this.state.URL+this.state.weather.rainicon} className="iconsize" alt="alternatetext"/>
+                                <div className="iconsizetext">{this.state.weather.vlag}%</div>
+                            </div>
+                            <div>
+                                <img src={this.state.URL+this.state.weather.windicon} className="iconsize" alt="alternatetext"/>
+                                <div className="iconsizetext">{this.state.weather.wind} kmph</div>
+                            </div>
+                            <div>
+                                <img src={this.state.URL+this.state.weather.fillicon} className="iconsize" alt="alternatetext"/>
+                                <div className="iconsizetext">{this.state.weather.tempfeels_like}°</div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
+                
                 <div className="cloud-service box-radius">
                 cloud-service
                 </div>

@@ -202,6 +202,7 @@ ul {
   font-size: 7rem;
   color: white;
   text-align: center;
+  text-shadow: 3px 5px 5px #11171440, 3px 0px 6px #1c223726;
 }
 
 .small-header-cal-eventlist {
@@ -255,69 +256,95 @@ ul {
   background: white;
   width: 124%;
   margin-left: -24%;
+  height: 100%;
 }
-
-.flex-weather {}
 
 .flex-2side {
   display: flex;
+  height: 100%;
 }
 
 .flex-2day {
   display: flex;
-  font-size: 36px;
-  margin: -4% 0% 0% 24%;
+  font-size: 30px;
   text-transform: capitalize;
   justify-content: center;
   color: white;
-  text-shadow: 3px 5px 5px #111714, 3px 0px 6px #1c2237;
+  padding: 0 0 0 25%;
+  text-shadow: 3px 5px 5px #11171447, 3px 0px 6px #1c22374d;
 }
-.icondeg{
-  display: flex;
-    justify-content: center;
-    align-items: center;
 
-    flex-direction: column;
+.icondeg {
+  width: 26%;
+  margin: auto 1%;
 }
-.city-info { 
+
+.icondeg div {
+  display: flex;
+  align-items: center;
+  padding: 3%;
+  text-shadow: 3px 5px 5px #11171473, 3px 0px 6px #1c223759;
+}
+
+.city-info {
   display: block;
   margin: 0;
   color: white;
-  padding: 7% 0% 0% 8%;
+  padding: 6% 0% 6% 8%;
   letter-spacing: 2px;
   font-weight: bold;
   line-height: 1.6;
 }
-.cityinf1{
-  font-size: 1.23em;    letter-spacing: .05em;
-  font-family: -apple-system,BlinkMacSystemFont,"SpaceGrotesk","Lato","Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+
+.cityinf1 {
+  font-size: 1.23em;
+  letter-spacing: .05em;
+  font-family: -apple-system, BlinkMacSystemFont, "SpaceGrotesk", "Lato", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-.cityinf2{
+
+.cityinf2 {
   align-items: center;
   font-size: 1em;
-  font: normal 100%/1.4 "SpaceGrotesk","Lato","Open Sans","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font: normal 100%/1.4 "SpaceGrotesk", "Lato", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   display: flex;
   letter-spacing: .05em;
 }
-.info-deg{
+
+.info-deg {
   display: flex;
-  padding: 6% 0% 0% 14%;
+  padding: 0% 3% 0% 14%;
 }
-.temp{
+
+.temp {
   margin: 0% auto;
-    font-family: "Ubuntu", sans-serif;
-    font-size: 6rem;
-    color: white;
-    text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 6rem;
+  color: white;
+  text-align: center;
+  text-shadow: 3px 5px 5px #11171440, 3px 0px 6px #1c223726;
 }
+
 .parameter {
   display: flex;
   flex-direction: column;
-  width: 66%; 
+  width: 76%;
 }
-.cursor{
-  cursor:default;
+
+.cursor {
+  cursor: default;
 }
+
+.iconsize {
+  width: 41px;
+}
+
+.iconsizetext {
+  color: white;
+  padding-left: 8px !important;
+  letter-spacing: .05em;
+  font: normal 125%/1.4 "SpaceGrotesk", "Lato", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
 /*  */
 
 .news {
