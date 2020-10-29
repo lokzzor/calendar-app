@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import { IconButton } from '@material-ui/core/';
 import { AccountCircle } from '@material-ui/icons';
 import EventNoteIcon from '@material-ui/icons/EventNote';
-import NewReleasesIcon from '@material-ui/icons/NewReleases';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import HomeIcon from '@material-ui/icons/Home';
 
 export default class AppHeader extends Component {
     render() {
@@ -20,9 +20,9 @@ export default class AppHeader extends Component {
                         <div className="menu">
                             <div>
                                 <IconButton color="inherit">
-                                    <Link className="link" to="/login"><NewReleasesIcon className="navicons menu-icon"/></Link>
+                                    <Link className="link" to="/"><HomeIcon className="navicons menu-icon"/></Link>
                                 </IconButton>
-                                <Link className="link" to="/login">News</Link>
+                                <Link className="link" to="/">Home</Link>
                             </div>
                             <div>
                                 <IconButton color="inherit">

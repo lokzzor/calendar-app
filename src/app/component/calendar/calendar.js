@@ -13,16 +13,24 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 import axios from 'axios';
 import moment from 'moment';
-
+import CountUp from 'react-countup';
 
 
 export default class AppCalendar extends Component {
-    componentDidMount() { 
+    async componentDidMount() { 
         configureAnchors({offset: -95, scrollDuration: 200});
-        this.getWeather();
+        try {
+            await axios.get(this.state.URL+'/api/get/weather').then(resp => {
+                this.setState(state=>({ weather:resp.data }));
+                console.log(this.state.weather);
+            });
+        } catch (error) {
+            console.log(error);
+        } 
     }
     state = {
         currentMonth: moment(new Date()).format("YYYY-MM-DD"),
@@ -30,12 +38,7 @@ export default class AppCalendar extends Component {
         URL: "http://localhost:8080",
         weather:{}
     };
-    getWeather(){
-        axios.get(this.state.URL+'/api/get/weather').then(resp => {
-            console.log(resp.data);
-            this.setState(state=>({ weather:resp.data }));
-        }); 
-    }
+
     renderHeader() {
 /*         axios.get(this.state.URL+'/api/get/room').then(resp => {
             console.log(resp.data);
@@ -46,7 +49,7 @@ export default class AppCalendar extends Component {
 
                 </div>
                 <div className="header-func">
-                    
+                    <HomeIcon className="icon-button"/><p className="title-menu"></p>
                 </div>
             </div>
 
@@ -142,7 +145,12 @@ export default class AppCalendar extends Component {
             backgroundImage: 'url(' + imgUrl + ')',
             backgroundSize: "cover"
         }
+        const clouds = this.state.weather.clouds;
+        const vlag =this.state.weather.vlag;
+        const wind=this.state.weather.wind;
+        const tempfeels_like=this.state.weather.tempfeels_like;
         return (
+
             <div className="main-container">
                 <div className="sidenav box-radius">
                     <h2 className="titular cursor">MENU</h2>
@@ -168,6 +176,7 @@ export default class AppCalendar extends Component {
                         </ListItem>
                     </ul>
                 </div>
+                <ScrollableAnchor id={'up'}>
                 <div className="small-calendar box-radius">
                     <div className="sidenav box-radius">
                         <h2 className="titular cursor">{moment(this.state.currentMonth).format('dddd')}</h2>
@@ -187,6 +196,7 @@ export default class AppCalendar extends Component {
                         </ListItem>
                     </div>
                 </div>
+                </ScrollableAnchor>
                 <div className="weather box-radius" style={divStyle}>
                     <div className="flex-2side">
                         <div className="parameter">
@@ -207,19 +217,39 @@ export default class AppCalendar extends Component {
                         <div className="icondeg cursor">
                             <div>
                                 <img src={this.state.URL+this.state.weather.cloudicon} className="iconsize" alt="alternatetext"/>
-                                <div className="iconsizetext">{this.state.weather.clouds}%</div>
+                                <div className="iconsizetext">
+                                    { clouds 
+                                        ? <CountUp duration={5} end={clouds}/>
+                                        : <CountUp end={0}/>
+                                     }%
+                                </div>
                             </div>
                             <div>
                                 <img src={this.state.URL+this.state.weather.rainicon} className="iconsize" alt="alternatetext"/>
-                                <div className="iconsizetext">{this.state.weather.vlag}%</div>
+                                <div className="iconsizetext">
+                                    { vlag 
+                                    ? <CountUp duration={5} end={vlag}/>
+                                    : <CountUp end={0}/>
+                                    }%
+                                </div>
                             </div>
                             <div>
                                 <img src={this.state.URL+this.state.weather.windicon} className="iconsize" alt="alternatetext"/>
-                                <div className="iconsizetext">{this.state.weather.wind} kmph</div>
+                                <div className="iconsizetext">
+                                    { wind 
+                                    ? <CountUp duration={5} end={wind}/>
+                                    : <CountUp end={0}/>
+                                    } <span>kmph</span>
+                                </div>
                             </div>
                             <div>
                                 <img src={this.state.URL+this.state.weather.fillicon} className="iconsize" alt="alternatetext"/>
-                                <div className="iconsizetext">{this.state.weather.tempfeels_like}°</div>
+                                <div className="iconsizetext">
+                                    { tempfeels_like 
+                                    ? <CountUp duration={5} end={tempfeels_like}/>
+                                    : <CountUp end={0}/>
+                                    }°
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -247,6 +277,7 @@ export default class AppCalendar extends Component {
                 news
                 </div>
                 </ScrollableAnchor>
+                <div className="top"><a href='#up'> <KeyboardArrowUpIcon className="icon-button"/></a></div>
             </div>
         )
     }

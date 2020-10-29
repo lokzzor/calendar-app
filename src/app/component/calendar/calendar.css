@@ -18,7 +18,7 @@
   border-top-right-radius: 0.6em;
   border-top-left-radius: 0.6em;
 }
-
+.top { opacity: 0.7; position: fixed; bottom: 6.3%; right: 2%; }
 /* SIDE */
 
 ul {
