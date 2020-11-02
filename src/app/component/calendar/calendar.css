@@ -357,16 +357,7 @@ ul {
 }
 
 /*  */
-
-.news {
-  grid-column: 1/4;
-  background: #394264;
-}
-
-.chart-state {
-  background: #eee;
-}
-
+/* Cloud */
 .cloud-service {
   background: #394264;
   background: -webkit-linear-gradient(
@@ -380,11 +371,26 @@ ul {
   flex-direction: column;
   text-align: center;
 }
-
-.room-event {
-  background: #eee;
+.cloudcss{
+  padding: 7%;
 }
+/*  */
 
+/* Chart */
+.chart-state {
+  background: linear-gradient( to top, rgb(161, 219, 255) 0%, rgb(203, 235, 255) 53%, rgb(240, 249, 255) 100% );
+}
+.chart-title{
+ color:#000000b0;
+}
+.room-event {
+  background: linear-gradient( to top, rgb(161, 219, 255) 0%, rgb(203, 235, 255) 53%, rgb(240, 249, 255) 100% );
+}
+/*  */
+.news {
+  grid-column: 1/4;
+  background: #394264;
+}
 /* Animations */
 #arrow {
   animation: arrow 3s ease-in-out alternate infinite;

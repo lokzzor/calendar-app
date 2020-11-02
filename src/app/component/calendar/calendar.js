@@ -29,6 +29,7 @@ import icon13 from "./img/13d.svg";
 import icon50 from "./img/50d.svg";
 import day from "./img/daycloud.jpg";
 import night from "./img/night.jpg";
+import omus from "./img/omus.png";
 
 export default class AppCalendar extends Component {
   async componentDidMount() {
@@ -36,7 +37,7 @@ export default class AppCalendar extends Component {
     try {
       await axios.get(this.state.URL + "/api/get/weather").then((resp) => {
         this.setState((state) => ({ weather: resp.data }));
-        console.log(this.state.weather);
+        //console.log(this.state.weather);
       });
     } catch (error) {
       console.log(error);
@@ -132,11 +133,12 @@ export default class AppCalendar extends Component {
     const options = {
       chart: {
         type: "pie",
-        height: 350,
+        height: 320,
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
         backgroundColor: null,
+        marginTop: -10,
       },
       credits: { enabled: false },
       plotOptions: {
@@ -154,9 +156,7 @@ export default class AppCalendar extends Component {
           innerSize: "60%",
         },
       },
-      title: {
-        text: "Room Event",
-      },
+      title: {text: ""},
       subtitle: {
         text: "",
         floating: true,
@@ -594,41 +594,31 @@ export default class AppCalendar extends Component {
         </div>
 
         <div className="cloud-service box-radius">
-          <div className="">
+          <div className="cloudcss">
+          <a href="https://bmn.jinr.ru/">
             <img
               src="https://nica.jinr.ru/images/jinr-logo-eng.png"
               height="100"
               alt=""
             />
+          </a>
           </div>
-          <div className="">
+          <div className="cloudcss">
+          <a href="http://omus.jinr.ru/">
             <img
-              src="https://nica.jinr.ru/images/jinr-logo-eng.png"
+              src={omus}
               height="100"
               alt=""
             />
-          </div>
-          <div className="">
-            <img
-              src="https://nica.jinr.ru/images/jinr-logo-eng.png"
-              height="100"
-              alt=""
-            />
-          </div>
-          <div className="">
-            <img
-              src="https://nica.jinr.ru/images/jinr-logo-eng.png"
-              height="100"
-              alt=""
-            />
+          </a>
           </div>
         </div>
         <div className="chart-state box-radius">
-          <div>
-            <HighchartsReact highcharts={Highcharts} options={options} />
-          </div>
+          <h2 className="titular chart-title cursor">Event Room</h2>
+          <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
         <div className="room-event box-radius">
+          <h2 className="titular chart-title cursor">Room</h2>
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
         <ScrollableAnchor id={"calendar"}>
@@ -761,6 +751,7 @@ export default class AppCalendar extends Component {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
+                        
           </div>
         );
         day = moment(day).add(1, "days");
@@ -771,7 +762,6 @@ export default class AppCalendar extends Component {
         </div>
       );
       days = [];
-      //console.log(days);
     }
     return <div className="body">{rows}</div>;
   }
@@ -780,6 +770,6 @@ export default class AppCalendar extends Component {
     this.setState({
       selectedDate: moment(day).add(1, "days"),
     });
-    console.log(moment(day).add(1, "days").format("D"));
+    //console.log(moment(day).add(1, "days").format("D"));
   };
 }
