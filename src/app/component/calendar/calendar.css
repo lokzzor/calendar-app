@@ -360,12 +360,7 @@ ul {
 /* Cloud */
 .cloud-service {
   background: #394264;
-  background: -webkit-linear-gradient(
-    top,
-    rgb(161, 219, 255) 0%,
-    rgb(203, 235, 255) 53%,
-    rgb(240, 249, 255) 100%
-  );
+  background: linear-gradient( to top, rgb(0 0 0 / 0%) 0%, rgb(82 100 111 / 62%) 53%, rgb(82 133 167) 100% );
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -382,6 +377,7 @@ ul {
 }
 .chart-title{
  color:#000000b0;
+ letter-spacing: 1px;
 }
 .room-event {
   background: linear-gradient( to top, rgb(161, 219, 255) 0%, rgb(203, 235, 255) 53%, rgb(240, 249, 255) 100% );
