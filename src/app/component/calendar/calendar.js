@@ -16,20 +16,30 @@ import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import axios from "axios";
 import moment from "moment";
 import CountUp from "react-countup";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
 import ReactEcharts from "echarts-for-react";
 
-import icon1 from "./img/01d.svg";import icon1n from "./img/01n.svg";import icon2n from "./img/02n.svg";import icon3d from "./img/03d.svg";import icon9 from "./img/09d.svg";import icon11 from "./img/11d.svg";import icon13 from "./img/13d.svg";import icon50 from "./img/50d.svg";import day from "./img/daycloud.jpg";import night from "./img/night.jpg";import omus from "./img/omus.png";
+import icon1 from "./img/01d.svg";
+import icon1n from "./img/01n.svg";
+import icon2n from "./img/02n.svg";
+import icon3d from "./img/03d.svg";
+import icon9 from "./img/09d.svg";
+import icon11 from "./img/11d.svg";
+import icon13 from "./img/13d.svg";
+import icon50 from "./img/50d.svg";
+import day from "./img/daycloud.jpg";
+import night from "./img/night.jpg";
+import omus from "./img/omus.png";
 
 export default class AppCalendar extends Component {
   async componentDidMount() {
     configureAnchors({ offset: -95, scrollDuration: 200 });
     try {
-      await axios.get(this.state.URL + "/api/get/weather").then((resp) => { this.setState((state) => ({ weather: resp.data }));
-        //console.log(this.state.weather);
+      await axios.get(this.state.URL + "/api/get/weather").then((resp) => {
+        this.setState((state) => ({ weather: resp.data }));
       });
-    } catch (error) { console.log(error);}
+    } catch (error) {
+      console.log(error);
+    }
     this.background();
     this.charts();
   }
@@ -41,11 +51,13 @@ export default class AppCalendar extends Component {
     weather: {},
     weathericon: "null",
     background: "null",
-    roomevent: {},
-    buildroom: {}
+    roomevent: [],
+    buildroom: []
   };
 
   background() {
+    var test=new Date().getTime();
+    console.log(test);
     var hour = new Date().getHours();
     if (hour >= 6 && hour < 18) {
       this.setState((state) => ({ background: day }));
@@ -92,6 +104,7 @@ export default class AppCalendar extends Component {
         this.setState((state) => ({ weathericon: icon50 }));
       }
     } else {
+
       this.setState((state) => ({ background: night }));
       if (this.state.weather.icon_obj === "01n") {
         this.setState((state) => ({ weathericon: icon1n }));
@@ -115,25 +128,12 @@ export default class AppCalendar extends Component {
       }
     }
   }
-  charts(){
-    axios.get(this.state.URL + "/api/get/room_event").then((resp) => { 
-      let objmass1=[];let b={};
-      for(let i=0;i<resp.data.length;i++){
-        b={ name: "Room "+resp.data[i].room_number, y:(+resp.data[i].building_number)};
-        objmass1.push(b);
-      }
-
-      this.setState((state) => ({ roomevent: objmass1 }));
-      console.log(objmass1);
+  charts() {
+    axios.get(this.state.URL + "/api/get/room_event").then((resp) => {
+      this.setState((state) => ({ roomevent: resp.data })); 
     });
-    axios.get(this.state.URL + "/api/get/room_building").then((resp) => { 
-
-      let objmass2=[];let b={};
-      for(let i=0;i<resp.data.length;i++){
-        b={ value:(resp.data[i].count), name: "Building "+resp.data[i].building_number};
-        objmass2.push(b);
-      }
-      this.setState((state) => ({ buildroom: objmass2 }));
+    axios.get(this.state.URL + "/api/get/room_building").then((resp) => {
+      this.setState((state) => ({ buildroom: resp.data }));
     });
   }
   render() {
@@ -141,99 +141,111 @@ export default class AppCalendar extends Component {
       backgroundImage: "url(" + this.state.background + ")",
       backgroundSize: "cover",
     };
-    const piedataevent = this.state.roomevent;
-    const piedatabuild = this.state.buildroom;
-    const dataNames= this.state.buildroom;
-    console.log(dataNames)
+    const roomevent =this.state.roomevent.map(n => ({
+      name: "Room "+n.room_name,
+      value: n.countevent
+    }) );
+    const buildroom =this.state.buildroom.map(n => ({
+      name: "Building "+n.building_number,
+      value: n.count
+    }) );
+    
     const options = {
-      chart: {
-        type: "pie",
-        height: 320,
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        backgroundColor: null,
-        marginTop: -10,
+      // backgroundColor: "rgb(43, 51, 59)",
+      tooltip: {
+        trigger: "item",
+        formatter: "{a}<br/><strong>{b}</strong>: {c} ",
       },
-      credits: { enabled: false },
-      plotOptions: {
-        pie: {
-          showInLegend: true,
-          dataLabels: {
-            enabled: false,
-            distance: -14,
-            color: "white",
-            style: {
-              fontweight: "bold",
-              fontsize: 50,
-            },
-          },
-          innerSize: "60%",
+      
+      legend: {
+        icon: "circle",
+        x: "center",
+        y: "bottom",
+        itemGap: 13.5,
+        data: roomevent.map( ({name}) => ({name}) ),
+        textStyle: {
+          color: "black",
+          fontWeight: "bolder",
+          fontFamily: "Arial",
+          fontSize: 15,
+          padding: [5, 5, 5, 5],
+
         },
-      },
-      title: {text: ""},
-      subtitle: {
-        text: "",
-        floating: true,
-        style: {
-          fontSize: 16,
-          fontWeight: "bold",
-          color: "#000000",
-        },
-        y: 160,
       },
       series: [
         {
-          data: piedataevent[0]
+          name: "Series Name",
+          type: "pie",
+          animationDuration: 3000,
+          animationEasing: "quarticInOut",
+          radius: [20, 150],
+          fontSize: 14,
+          avoidLabelOverlap: false,
+          startAngle: 90,
+          hoverOffset: 5,
+          center: ["50%", "50%"],
+          roseType: "area",
+          selectedMode: "multiple",
+          label: {
+            normal: {
+              show: false,
+            },
+            emphasis: {
+              show: false,
+            },
+          },
+          data: roomevent.map( ({name, value}) => ({ name, value }) ),
         },
       ],
     };
     const option = {
-        // backgroundColor: "rgb(43, 51, 59)",
-  tooltip: {
-    trigger: "item",
-    formatter: "{a}<br/><strong>{b}</strong>: {c} "
-  },
-  legend: {
-    icon: "circle",
-    x: 'center',
-    y: 'bottom',
-    data: "dataNames",
-    textStyle: {
-      color: "black"
-    }
-  },
-  series: [
-    {
-      name: "Series Name",
-      type: "pie",
-      animationDuration: 3000,
-      animationEasing: "quarticInOut",
-      radius: [10, 150],
-      fontSize: 14,
-      avoidLabelOverlap: false,
-      startAngle: 90,
-      hoverOffset: 5,
-      center: ["50%", "50%"],
-      roseType: "area",
-      selectedMode: "multiple",
-      label: {
-        normal: {
-          show: false,
-        },
-        emphasis: {
-          show: false
-        }
+      // backgroundColor: "rgb(43, 51, 59)",
+      tooltip: {
+        trigger: "item",
+        formatter: "{a}<br/><strong>{b}</strong>: {c} ",
       },
-      data: piedatabuild
-        }
-      ]
+      legend: {
+        icon: "circle",
+        x: "center",
+        y: "bottom",
+        data: buildroom.map( ({name}) => ({name}) ),
+        textStyle: {
+          color: "black",
+        },
+      },
+      series: [
+        {
+          name: "Series Name",
+          type: "pie",
+          animationDuration: 3000,
+          animationEasing: "quarticInOut",
+          radius: [20, 150],
+          fontSize: 14,
+          avoidLabelOverlap: false,
+          startAngle: 90,
+          hoverOffset: 5,
+          center: ["50%", "50%"],
+          roseType: "area",
+          selectedMode: "multiple",
+          label: {
+            normal: {
+              show: false,
+            },
+            emphasis: {
+              show: false,
+            },
+          },
+          data: buildroom.map( ({name, value}) => ({ name, value }) ),
+        },
+      ],
     };
     const clouds = this.state.weather.clouds;
     const vlag = this.state.weather.vlag;
     const wind = this.state.weather.wind;
     const tempfeels_like = this.state.weather.tempfeels_like;
     const tempicon = this.state.weathericon;
+    var test2=new Date().getTime();
+    console.log(test2);
     return (
       <div className="main-container">
         <ScrollableAnchor id={"up"}>
@@ -630,31 +642,36 @@ export default class AppCalendar extends Component {
 
         <div className="cloud-service box-radius">
           <div className="cloudcss">
-          <a href="https://bmn.jinr.ru/">
-            <img
-              src="https://nica.jinr.ru/images/jinr-logo-eng.png"
-              height="100"
-              alt=""
-            />
-          </a>
+            <a href="http://www.jinr.ru/main-en/">
+              <img
+                src="https://nica.jinr.ru/images/jinr-logo-eng.png"
+                height="100"
+                alt=""
+              />
+            </a>
           </div>
           <div className="cloudcss">
-          <a href="http://omus.jinr.ru/">
-            <img
-              src={omus}
-              height="100"
-              alt=""
-            />
-          </a>
+            <a href="http://omus.jinr.ru/">
+              <img src={omus} height="100" alt="" />
+            </a>
           </div>
         </div>
         <div className="chart-state box-radius">
           <h2 className="titular chart-title cursor">Room - Event</h2>
-          <HighchartsReact highcharts={Highcharts} options={options} />
-        </div>
+          <ReactEcharts
+            option={options}
+            lazyUpdate={true}
+            style={{ height: "350px", width: "100%" }}
+            className="pie-chart"
+          />        </div>
         <div className="room-event box-radius">
           <h2 className="titular chart-title cursor">Building - Room</h2>
-          <ReactEcharts option={option} style={{height: "500px", width: "100%"}} className="pie-chart" />
+          <ReactEcharts
+            lazyUpdate={true}
+            option={option}
+            style={{ height: "350px", width: "100%" }}
+            className="pie-chart"
+          />
         </div>
         <ScrollableAnchor id={"calendar"}>
           <div className="calendar box-radius-top">
@@ -786,7 +803,6 @@ export default class AppCalendar extends Component {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
-                        
           </div>
         );
         day = moment(day).add(1, "days");
