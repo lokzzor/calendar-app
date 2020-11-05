@@ -152,24 +152,28 @@ export default class AppCalendar extends Component {
     
     const options = {
       // backgroundColor: "rgb(43, 51, 59)",
+      grid: {
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0
+      },
       tooltip: {
         trigger: "item",
         formatter: "{a}<br/><strong>{b}</strong>: {c} ",
       },
-      
+      color:['#5045f6','#45dbf7','#f6d54a','#f69846','#ff4343','#ad46f3','#44aff0'],
       legend: {
         icon: "circle",
-        x: "center",
-        y: "bottom",
+        orient: 'vertical',
+        left: 'right',
         itemGap: 13.5,
         data: roomevent.map( ({name}) => ({name}) ),
         textStyle: {
           color: "black",
-          fontWeight: "bolder",
           fontFamily: "Arial",
           fontSize: 15,
-          padding: [5, 5, 5, 5],
-
+          padding: [3, 3, 3, 3],
         },
       },
       series: [
@@ -187,6 +191,7 @@ export default class AppCalendar extends Component {
           roseType: "area",
           selectedMode: "multiple",
           label: {
+            paddingTop:'120px',
             normal: {
               show: false,
             },
@@ -204,13 +209,17 @@ export default class AppCalendar extends Component {
         trigger: "item",
         formatter: "{a}<br/><strong>{b}</strong>: {c} ",
       },
+      color:['#5045f6','#f6d54a','#44aff0','#45dbf7','#ff4343','#ad46f3','#f69846'],
       legend: {
         icon: "circle",
-        x: "center",
-        y: "bottom",
+        orient: 'vertical',
+        left: 'right',
         data: buildroom.map( ({name}) => ({name}) ),
         textStyle: {
           color: "black",
+          fontFamily: "Arial",
+          fontSize: 15,
+          padding: [3, 3, 3, 3],
         },
       },
       series: [
@@ -661,16 +670,14 @@ export default class AppCalendar extends Component {
           <ReactEcharts
             option={options}
             lazyUpdate={true}
-            style={{ height: "350px", width: "100%" }}
-            className="pie-chart"
+            className="sizecharts pie-chart "
           />        </div>
         <div className="room-event box-radius">
           <h2 className="titular chart-title cursor">Building - Room</h2>
           <ReactEcharts
             lazyUpdate={true}
             option={option}
-            style={{ height: "350px", width: "100%" }}
-            className="pie-chart"
+            className="sizecharts pie-chart "
           />
         </div>
         <ScrollableAnchor id={"calendar"}>
