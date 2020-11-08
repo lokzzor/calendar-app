@@ -10,6 +10,96 @@
   z-index: 999;
 }
 
+mark {
+  display: block;
+}
+.test {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.big {
+  width: 23px;
+  height: 23px;
+  border-radius: 30px;
+  line-height: 1.5;  
+  position: absolute;
+  font-size: 17px;
+  text-align: center;
+  top: -27px;
+  background: #a52a2abf;
+  z-index: 11;
+  left: 2px;
+  color: white;
+  cursor: pointer;
+}
+.swing {
+  -webkit-transform-origin: top center;
+  -ms-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-animation-name: swing;
+  animation-name: swing;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+@-webkit-keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+@keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
 .ss {
   font-family: Nunito, sans-serif;
 }
@@ -37,7 +127,7 @@
   text-decoration: none;
   font-size: 2.2rem;
   text-align: center;
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   letter-spacing: 2px;
   display: flex;
   align-items: center;
@@ -55,19 +145,26 @@
   text-align: center;
   justify-content: flex-end;
 }
-.link{
-  text-decoration: none; color: white; line-height: 0;
-}
-.menu{
+.link {
+  text-decoration: none;
   color: white;
-  display: grid;
-  grid-template-columns: 125px 125px 150px;
+  line-height: 0;
+}
+.menu {
+  color: white;
+  display: flex;
   align-items: center;
   font-size: 20px;
 }
-.menu .MuiIconButton-root{padding: 9px !important;}
-.menu-icon{font-size:1.8rem !important;}
-.menu div{
+.menu .MuiIconButton-root {
+  padding: 9px !important;
+}
+.menu-icon {
+  font-size: 1.8rem !important;
+}
+.menu div {
   display: flex;
   align-items: center;
+  padding: 0 4px;
+
 }

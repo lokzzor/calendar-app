@@ -18,6 +18,8 @@ import moment from "moment";
 import CountUp from "react-countup";
 import ReactEcharts from "echarts-for-react";
 
+import Cal from "../template-calendar/tempcalendar.js"
+
 import icon1 from "./img/01d.svg";
 import icon1n from "./img/01n.svg";
 import icon2n from "./img/02n.svg";
@@ -682,6 +684,7 @@ export default class AppCalendar extends Component {
         </div>
         <ScrollableAnchor id={"calendar"}>
           <div className="calendar box-radius-top">
+            <Cal/>
             {this.renderHeader()}
             {this.renderDays()}
             {this.renderCells()}

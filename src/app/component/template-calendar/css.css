@@ -1,0 +1,21 @@
+.makeStyles-background-30 {
+    background: #3468af !important;
+}
+.Cell-dayOfWeek-35{
+color: white !important;
+padding: 7% 0% !important;
+cursor: default;
+font-family: "Ubuntu", sans-serif;
+font-size: 14px !important;
+}
+.Cell-dayOfWeek-359 {
+    color: white !important;
+    padding: 7% 0% !important;
+    cursor: default;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px !important;
+}
+.Cell-highlightedText-70 {
+    font-weight: bold;
+    color: white !important;
+}

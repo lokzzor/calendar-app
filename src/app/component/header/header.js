@@ -25,6 +25,7 @@ export default class AppHeader extends Component {
                                 <Link className="link" to="/">Home</Link>
                             </div>
                             <div>
+                                <div className="test"><mark className="big swing">0</mark></div>
                                 <IconButton color="inherit">
                                     <Link className="link" to="/login"><EventAvailableIcon className="navicons menu-icon" /></Link>
                                 </IconButton>
