@@ -36,6 +36,14 @@ export default class Demo extends React.PureComponent {
           title: 'Approve Personal Computer Upgrade Plan',
           startDate: new Date(2020, 10, 10, 9, 30),
           endDate: new Date(2020, 10, 10, 11, 0),
+        }, {
+          title: 'Approve Personal Computer Upgrade Plan',
+          startDate: new Date(2020, 10, 10, 9, 30),
+          endDate: new Date(2020, 10, 10, 11, 0),
+        }, {
+          title: 'Approve Personal Computer Upgrade Plan',
+          startDate: new Date(2020, 10, 10, 9, 30),
+          endDate: new Date(2020, 10, 10, 11, 0),
         }]
     };
   }
@@ -45,7 +53,7 @@ export default class Demo extends React.PureComponent {
       <Paper>
         <Scheduler
           data={data}
-          height={720}
+          height={920}
           firstDayOfWeek={1}
         >
           <ViewState

@@ -292,7 +292,7 @@ export default class AppCalendar extends Component {
         </ScrollableAnchor>
         <div className="small-calendar box-radius">
           <div className="sidenav box-radius">
-            <h2 className="titular cursor">
+            <h2 className="titular cursor side">
               {moment(this.state.currentMonth).format("dddd")}
             </h2>
           </div>
