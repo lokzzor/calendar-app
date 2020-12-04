@@ -1,0 +1,148 @@
+.main-container {
+  font-family: "Ubuntu", sans-serif;
+  width: 70%;
+  margin: 6em auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr minmax(5em, 2fr);
+  grid-auto-rows: minmax(200px, auto);
+  grid-gap: 2em;
+}
+
+.box-radius {
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 0.6em;
+}
+
+.box-radius-top {
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  border-top-right-radius: 0.6em;
+  border-top-left-radius: 0.6em;
+}
+.top {
+  opacity: 0.6;
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+}
+
+/* SIDE */
+
+ul {
+  padding: 4% 0 !important;
+}
+
+.side{
+  background: linear-gradient(0deg, #0065e2, #0484a9) ;
+}
+
+.sidenav .titular {
+  background: #0951ab;
+  letter-spacing: 2px;
+}
+
+.titular {
+  display: block;
+  line-height: 60px;
+  margin: 0;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+}
+
+.side-button {
+  margin: 0;
+  padding-left: 0;
+  padding-top: 5% !important;
+  padding-bottom: 5% !important;
+}
+
+.icon-button {
+  width: 2em !important;
+  height: 1.1em !important;
+  color: white;
+}
+
+.title-menu {
+  padding-left: 5%;
+  font-size: 15px;
+  color: white;
+  margin-top: 1%;
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* Calendar */
+
+.calendar {
+  grid-column: 1/4;
+  background: #394264;
+}
+
+/* Cloud */
+.cloud-service {
+  background: #394264;
+  background: linear-gradient( to top, rgb(0 0 0 / 0%) 0%, rgb(82 100 111 / 62%) 53%, rgb(82 133 167) 100% );
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.cloudcss{
+  padding: 7%;
+}
+/*  */
+
+.news {
+  grid-column: 1/4;
+  background: #394264;
+}
+
+
+
+
+
+/* Animations */
+#arrow {
+  animation: arrow 3s ease-in-out alternate infinite;
+} /* -webkit-animation;-moz-animation;-o-animation; */
+@keyframes arrow {
+  0% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(5%);
+  }
+}
+@-webkit-keyframes arrow {
+  0% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(5%);
+  }
+}
+@-moz-keyframes arrow {
+  0% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(5%);
+  }
+}
+@-o-keyframes arrow {
+  0% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(5%);
+  }
+}
+
+/* Animations */
+
+/*
+@media (max-width: 600px) {
+
+} */
