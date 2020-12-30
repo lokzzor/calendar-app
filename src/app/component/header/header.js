@@ -3,7 +3,7 @@ import './header.css';
 
 import { Link } from 'react-router-dom'
 import { IconButton } from '@material-ui/core/';
-import { AccountCircle } from '@material-ui/icons';
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import HomeIcon from '@material-ui/icons/Home';
@@ -27,15 +27,15 @@ export default class AppHeader extends Component {
                             <div>
                                 <div className="test"><mark className="big swing">0</mark></div>
                                 <IconButton color="inherit">
-                                    <Link className="link" to="/login"><EventAvailableIcon className="navicons menu-icon" /></Link>
+                                    <Link className="link" to="/event-list"><EventAvailableIcon className="navicons menu-icon" /></Link>
                                 </IconButton>
-                                <Link className="link" to="/login">Event</Link>
+                                <Link className="link" to="/event-list">Event</Link>
                             </div>
                             <div>
                                 <IconButton color="inherit">
-                                    <Link className="link" to="/login"><AccountCircle className="navicons menu-icon" /></Link>
+                                    <Link className="link" to="/dictionary"><SettingsApplicationsIcon className="navicons menu-icon" /></Link>
                                 </IconButton>
-                                <Link className="link" to="/login">Account</Link>
+                                <Link className="link" to="/dictionary">Dictionary</Link>
                             </div>
                         </div>
                     </div>

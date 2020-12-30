@@ -21,28 +21,26 @@ import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 
 export default class Weather extends Component {
     async componentDidMount() {
-        try {
-          await axios.get(this.state.URL + "/api/get/weather").then((resp) => {
-            this.setState((state) => ({ weather: resp.data }));
+      setInterval(() => this.setState({ time: moment().format("MMMM Do YYYY | HH:mm")}), 1000)
+      try {
+          await axios.get("/api/get/weather").then((resp) => {
+            this.setState(() => ({ weather: resp.data }));
           });
         } catch (error) {
           console.log(error);
         }
         this.background();
       }
-    
       state = {
         currentMonth: moment(new Date()).format("YYYY-MM-DD"),
         selectedDate: moment(new Date()).format("YYYY-MM-DD"),
-        URL: "http://localhost:8080",
         weather: {},
-        weathericon: "null",
-        background: "null"
+        weathericon: "",
+        background: "",
+        time: moment().format("MMMM Do YYYY | HH:mm")
       };
     
       background() {
-        var test = new Date().getTime();
-        console.log(test);
         var hour = new Date().getHours();
         if (hour >= 6 && hour < 18) {
           this.setState((state) => ({ background: day }));
@@ -119,6 +117,7 @@ export default class Weather extends Component {
         const clouds = this.state.weather.clouds;
         const vlag = this.state.weather.vlag;
         const wind = this.state.weather.wind;
+        const time = this.state.time;
         const tempfeels_like = this.state.weather.tempfeels_like;
         const tempicon = this.state.weathericon;
         const divStyle = {
@@ -132,7 +131,7 @@ export default class Weather extends Component {
               <div className="city-info">
                 <p className="cityinf1 cursor">Dubna, Moscow region, Russia</p>
                 <p className="cityinf2 cursor">
-                  {moment().format("MMMM Do YYYY | HH:mm")}{" "}
+                  {time}{" "}
                   <QueryBuilderIcon
                     style={{ fontSize: "1em", marginLeft: "0.2em" }}
                   />

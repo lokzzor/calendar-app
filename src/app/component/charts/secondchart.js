@@ -9,11 +9,10 @@ export default class Secondchart extends Component {
         this.charts();
     }
     state = {
-        URL: "http://localhost:8080",
         buildroom: []
     };
     charts() {
-        axios.get(this.state.URL + "/api/get/room_building").then((resp) => {
+        axios.get("/api/get/room_building").then((resp) => {
           this.setState((state) => ({ buildroom: resp.data }));
         });
       }
@@ -28,17 +27,20 @@ export default class Secondchart extends Component {
               trigger: "item",
               formatter: "{a}<br/><strong>{b}</strong>: {c} ",
             },
-            color:['#5045f6','#f6d54a','#44aff0','#45dbf7','#ff4343','#ad46f3','#f69846'],
+            color:['#fff700','#ff0000','#73e831','#b503ef','#ef8603','#691616'],
             legend: {
               icon: "circle",
               orient: 'vertical',
               left: 'right',
               data: buildroom.map( ({name}) => ({name}) ),
               textStyle: {
-                color: "black",
-                fontFamily: "Arial",
-                fontSize: 15,
+                color: "white",
+                fontFamily: "Courier New",
+                fontSize: 14,
                 padding: [3, 3, 3, 3],
+                fontStyle: "normal",
+                fontWeight: "bold",
+                backgroundColor: "#0074e0"
               },
             },
             series: [
@@ -47,7 +49,7 @@ export default class Secondchart extends Component {
                 type: "pie",
                 animationDuration: 3000,
                 animationEasing: "quarticInOut",
-                radius: [20, 150],
+                radius: ["23%", "95%"],
                 fontSize: 14,
                 avoidLabelOverlap: false,
                 startAngle: 90,
@@ -69,7 +71,7 @@ export default class Secondchart extends Component {
           };
         return (
             <>
-          <h2 className="titular chart-title2 cursor">Building - Room</h2>
+          <h2 className="titular chart-title cursor">Building - Room</h2>
           <ReactEcharts
             lazyUpdate={true}
             option={option}

@@ -24,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-scrollable-anchor": "^0.6.1",
+    "react-spring": "^8.0.27",
     "typescript": "latest"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy":"http://localhost:8080",
   "browserslist": {
     "production": [
       ">0.2%",

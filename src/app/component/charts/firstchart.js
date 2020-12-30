@@ -3,17 +3,16 @@ import './chart.css';
 import ReactEcharts from "echarts-for-react";
 import axios from "axios";
 
-
 export default class Firstchart extends Component {
+  
     async componentDidMount() {
         this.charts();
     }
     state = {
-        URL: "http://localhost:8080",
         roomevent: [],
     };
     charts() {
-        axios.get(this.state.URL + "/api/get/room_event").then((resp) => {
+        axios.get("/api/get/room_event").then((resp) => {
           this.setState((state) => ({ roomevent: resp.data })); 
         });
     }
@@ -34,18 +33,23 @@ export default class Firstchart extends Component {
               trigger: "item",
               formatter: "{a}<br/><strong>{b}</strong>: {c} ",
             },
-            color:['#5045f6','#45dbf7','#f6d54a','#f69846','#ff4343','#ad46f3','#44aff0'],
+            color:['#fff700','#ff0000','#73e831','#b503ef','#ef8603','#691616'],
             legend: {
               icon: "circle",
               orient: 'vertical',
               left: 'right',
+              
               itemGap: 13.5,
               data: roomevent.map( ({name}) => ({name}) ),
               textStyle: {
-                color: "black",
-                fontFamily: "Arial",
-                fontSize: 15,
+                color: "white",
+                fontFamily: "Courier New",
+                fontSize: 14,
                 padding: [3, 3, 3, 3],
+                fontStyle: "normal",
+                fontWeight: "bold",
+                backgroundColor: "#0074e0"
+
               },
             },
             series: [
@@ -54,7 +58,7 @@ export default class Firstchart extends Component {
                 type: "pie",
                 animationDuration: 3000,
                 animationEasing: "quarticInOut",
-                radius: [20, 150],
+                radius: ["23%", "95%"],
                 fontSize: 14,
                 avoidLabelOverlap: false,
                 startAngle: 90,
