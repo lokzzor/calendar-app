@@ -21,8 +21,8 @@
 }
 
 .modalwrapper{
-  width: 50em;
-  height: 42em;
+  width: 47em;
+  height: auto;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -94,15 +94,10 @@
   font-size: 1.1rem;
   line-height: 1.5;
   border-radius: .25rem !important;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
 }
-.addmore{
-  color: blue !important;
-  cursor: pointer;
-  padding-top: 4%;
-  align-items: center !important;
-  display: flex;
-  justify-content: center;  
-}
+
 
 .papper{
   padding: 2px 4px;
@@ -121,22 +116,32 @@
 }
 .content-form-name{
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
 .content-form-name1{
-  width: 68%;
+  width: 70%;
+  border-radius: 3.6px;
+  line-height: 3.6;
+  font-size: 1.1rem; 
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 }
 
 .content-form-name2{
-  width: 31%;
+  width: auto;
+  margin-right: 9%;  
 }
 .maintitle{
   margin-left: spacing(1);
   flex: 1;
+  width: 85%; font-size: 1.1rem !important;
 }
 
 .content-form-other{
+  display: flex;
+  justify-content: center;
+  flex-grow: 3;
 
 }
 .MuiSwitch-colorSecondary.Mui-checked {
@@ -144,4 +149,42 @@
 }
 .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
   background-color: #54494d !important;
+}
+.checkbox-event{
+  display: flex;
+  margin: auto;
+  width: 70%;
+  text-align: center;
+  justify-content: space-evenly;
+  padding: 2% 1% 1% 1%;
+}
+.content-event{
+  display: flex;
+  margin: auto;
+  width: 82%;
+  text-align: center;
+  justify-content: space-between;
+}
+.event-info{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 4% 0 0px 2%;
+  font-size: 1.16rem;
+  color: #007bff;
+  cursor: default;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(.3rem - 1px);
+  border-top-right-radius: calc(.3rem - 1px);
+}
+.event-details{
+    display: flex;
+    flex-direction: column;
+}
+.event-details1{
+  padding: 2% 1% 1% 1%;
+}
+.event-details2{
+  padding: 2% 1% 1% 1%;
 }

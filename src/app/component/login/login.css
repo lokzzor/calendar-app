@@ -1,6 +1,6 @@
 .mainlogin{
     position: absolute;
-    top: 50%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -36,7 +36,7 @@
 .containerlogin{
     background: #fff;
     width: 380px;
-    height: 450px;
+    height: 460px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     border-radius: 0.6em;   box-sizing: border-box;    position: relative;
     overflow: hidden;
@@ -78,15 +78,29 @@
     border-radius: 0.8em;
     overflow: hidden;
     z-index: 1;
+
 }
 
 .avatarlogin{
-    width: 92px;
+    width: 100px;
     height: 100px;
     margin: 6% auto;
     transform: skewY(-5deg) translateY(20px);
 }
-
+.avatarlogin:hover{
+    animation: beat 1.4s linear infinite;
+}
+@keyframes beat {
+    0% {
+        width: 100px;
+    }
+    50% {
+        width: 85px;
+    }
+    100% {
+        width: 100px;
+    }
+}
 .titlelogin{
     text-transform: uppercase;
     transform: skewY(-5deg) translateY(20px);
@@ -137,8 +151,9 @@
 
 /*     transform: skewY(-5deg) translateY(20px);
  */
-
-
+ .contentlogin{
+ padding: 3% 0 1% 0;
+}
 .contentlogin input{
     display: block;
     height: 42px;

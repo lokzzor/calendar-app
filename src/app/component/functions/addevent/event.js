@@ -2,34 +2,41 @@ import React, { useRef, /* useEffect, useCallback  */} from 'react';
 import { useSpring, animated } from 'react-spring';
 import CloseIcon from '@material-ui/icons/Close';
 import ListItem from "@material-ui/core/ListItem";
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Grid from "@material-ui/core/Grid";
-import Switch from "@material-ui/core/Switch";
 import axios from "axios";
-import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
+import Checkbox from '@material-ui/core/Checkbox';
+import { red,blue } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
+import moment from "moment";
+import MenuItem from '@material-ui/core/MenuItem';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import './event.css';
 //import axios from "axios";
 
 export const Eventcal = (props) => {
   const modalRef = useRef();
   const [state, setState] = React.useState({
-    checkedA: true,
     event_name:'',
     room_name:'',
     person_id:'',
     event_start:'',
-    event_end:''
+    date1 : moment().format('YYYY-MM-DDT09:00:00'),
+    date2 : moment().format('YYYY-MM-DDT19:00:00'),
+    event_end:'',
+    checkedAll: false,
+    checkedRepeat: false,
   });
   const changeHandle = event => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
-
+  const handleChange = (event) => {
+    console.log(state.event_start)
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
   const animation = useSpring({
     config: {
       duration: 250
@@ -48,7 +55,15 @@ export const Eventcal = (props) => {
     axios.post( "/api/get/calendarpostevent", { state }).then((resp) => {
     })
   }
-
+  const GreenCheckbox = withStyles({
+    root: {
+      color: blue[400],
+      '&$checked': {
+        color: red[600],
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox color="default" {...props} />);
   return (
     <>
     { props.showModal ? (
@@ -62,25 +77,83 @@ export const Eventcal = (props) => {
               <div className="content-form">
                 <form  noValidate autoComplete="off">
                   <div className="content-form-name">
-                    <Paper component="form" className="papper">
                       <div className="content-form-name1">
                         <IconButton  aria-label="menu"> <MenuIcon /> </IconButton>
-                        <InputBase className="maintitle" placeholder="Event Name" autoFocus={true} name="event_name" onChange={changeHandle}/>
+                        <InputBase className="maintitle"   placeholder="Event Name" autoFocus={true} name="event_name" onChange={changeHandle}/>
                       </div>
-                    </Paper>
                      <div className="content-form-name2">
                       <ListItem onClick={createEvent} className="btn btn-primary" button>
                               <p className=""> <>Save</>{" "}</p>
                       </ListItem>
                     </div>
                   </div>
-                  <div className="content-form-other">
-                    <div className="">
-                      
-                    </div>
-                    <div className="">
-
-                    </div>
+                  <div className="checkbox-event">
+                    
+                      <FormControlLabel
+                        control={<GreenCheckbox checked={state.checkedAll} onChange={handleChange} name="checkedAll" />}
+                        label="All day"
+                      />
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedRepeat}
+                            onChange={handleChange} 
+                            name="checkedRepeat"
+                            color="primary"
+                          />
+                        }
+                        label="Repeat"
+                      />
+                  </div>
+                  <div className="content-event">
+                    <TextField className="mar"
+                      label="From"
+                      type="datetime-local"
+                      name="event_start" 
+                      onChange={changeHandle}
+                      inputProps={{ style: { fontSize: "0.95rem" } }} 
+                      defaultValue={state.date1}
+                      variant="outlined"
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
+                    />
+                    <TextField className="mar"
+                      variant="outlined"
+                      label="To"
+                      name="event_end" 
+                      onChange={changeHandle}
+                      defaultValue={state.date2}
+                      inputProps={{ style: { fontSize: "0.95rem" } }} 
+                      type="datetime-local"
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
+                    /> 
+                  </div>
+                  <div className="event-info">
+                    Event Details
+                  </div>
+                  <div className="event-details">
+                    <div className="event-details1">
+                      <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          defaultValue = ""
+                          style={{ width: "14em"}}
+                          label="Room Name"
+                          name="room_name" 
+                          onChange={changeHandle}
+                          variant="outlined"
+                        >
+                          {props.room.map((option) => (
+                            <MenuItem  key={option.room_name} value={option.room_name}> {option.room_name} </MenuItem>
+                          ))}
+                        </TextField>
+                      </div>
+                      <div className="event-details2">
+                        <TextField  disabled style={{ width: "14em"}} InputProps={{ readOnly: true, }} id="outlined-select-currency-native" variant="outlined" label="Person" defaultValue="Person" />
+                      </div>
                   </div>
                 </form>
               </div>
@@ -94,7 +167,6 @@ export const Eventcal = (props) => {
 
 /* 
 
-                      <div className="addmore"><AddCircleIcon/> <span style={{ paddingLeft: "0.2rem"}}> Add more details</span></div>
 
 
 
