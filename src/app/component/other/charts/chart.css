@@ -1,6 +1,6 @@
 /* Chart */
 .chart-state {
-    background: linear-gradient(210deg, #0065e2, #00c6ffd1);
+  background: linear-gradient(210deg, #3e0e0e40, #f12323);
   }
   .chart-title{
    color:white;
@@ -11,7 +11,12 @@
     letter-spacing: 1px;
    }
   .room-event {
-/*     background: linear-gradient( to top, rgb(161, 219, 255) 0%, rgb(203, 235, 255) 53%, rgb(240, 249, 255) 100% ); */    background: linear-gradient(210deg, #00c6ffd1, #0065e2);  
+/*     background: linear-gradient( to top, rgb(161, 219, 255) 0%, rgb(203, 235, 255) 53%, rgb(240, 249, 255) 100% );     
+     background: linear-gradient(210deg, #00c6ffd1, #0065e2);  
+
+ background: linear-gradient(150deg, #0c000040, #184bdc); 
+*/  
+ background: linear-gradient(150deg, #0c000040, #c3577eb3);
   }
   .sizecharts{
     width: 100%;

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, Redirect, BrowserRouter as Router, Route } from 'react-router-dom';
 
-import AppHeader from './app/component/header/header'
-import AppLogin from './app/component/login/login'
+import AppHeader from './app/component/main/header/header'
+import AppLogin from './app/component/main/login/login'
 import Home from './app/home/home'
-import Eventlist from './app/component/event-list/eventlist'
-import Dictionary from './app/component/dictionary/dictionary'
+import Eventlist from './app/component/other/event-list/eventlist'
+import Dictionary from './app/component/other/dictionary/dictionary'
 function App() {
   return (
     <Router>
@@ -15,6 +15,7 @@ function App() {
         <Route  path="/account" component={AppLogin}   />
         <Route  path="/event-list" component={Eventlist}   />
         <Route  path="/dictionary" component={Dictionary}   />
+        <Redirect to="/" />
       </Switch>
     </Router>
   );

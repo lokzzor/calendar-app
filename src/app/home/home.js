@@ -3,17 +3,17 @@ import "./home.css";
 import { Link } from 'react-router-dom'
 
 /* Add */
-import Smcalendar from "../component/smallcalendar/smcalendar.js"
-import Calendar from "../component/calendar/calendar.js"
-import Firstchart from "../component/charts/firstchart.js"
-import Secondchart from "../component/charts/secondchart.js"
-import Weather from "../component/weather/weather.js"
+import Smcalendar from "../component/other/smallcalendar/smcalendar.js"
+import Calendar from "../component/other/calendar/calendar.js"
+import Firstchart from "../component/other/charts/firstchart.js"
+import Secondchart from "../component/other/charts/secondchart.js"
+import Weather from "../component/other/weather/weather.js"
 /*  */
 
 import ScrollableAnchor from "react-scrollable-anchor";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import { configureAnchors } from "react-scrollable-anchor";
-import omus from "../component/weather/img/omus.png";
+import omus from "../component/other/weather/img/omus.png";
 
 export default class Home extends Component {
   componentDidMount() {

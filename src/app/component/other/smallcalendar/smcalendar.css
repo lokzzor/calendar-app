@@ -17,7 +17,7 @@
   }
 
 .small-calendar {
-    background: linear-gradient(210deg, #0065e2, #00c6ffd1);
+    background: linear-gradient(210deg, #0065e2, rgb(0, 64, 128));
     display: flex;
     flex-direction: column;
     color: white;
@@ -49,6 +49,8 @@
   .add-func-event {
     margin: 0;
     font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
     width: 100%;
     padding: 0;
     display: flex;
@@ -72,13 +74,13 @@
 
   }
   .listli:first-child .colorcircle{
-    color: #fff700;    font-size: 22px;
+    color: #fffeeb;    font-size: 22px;
   }
   .listli:nth-child(2n) .colorcircle{
-    color: red;    font-size: 22px;
+    color: #3fdc68e6;    font-size: 22px;
   }
   .listli:nth-child(3n) .colorcircle{
-    color: #1bf700;    font-size: 22px;
+    color: #fff935e6;    font-size: 22px;
   }
   .titleevent{
     padding-left: 2%;

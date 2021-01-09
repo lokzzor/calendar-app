@@ -3,32 +3,25 @@ import './chart.css';
 import ReactEcharts from "echarts-for-react";
 import axios from "axios";
 
-export default class Firstchart extends Component {
-  
+
+export default class Secondchart extends Component {
     async componentDidMount() {
-        this.charts();
+      axios.get("/api/get/room_building").then((resp) => {
+        this.setState((state) => ({ buildroom: resp.data }));
+      });
     }
     state = {
-        roomevent: [],
+        buildroom: []
     };
-    charts() {
-        axios.get("/api/get/room_event").then((resp) => {
-          this.setState((state) => ({ roomevent: resp.data })); 
-        });
-    }
+
     render() {
-        const roomevent =this.state.roomevent.map(n => ({
-            name: "Room "+n.room_name,
-            value: n.countevent
+        const buildroom =this.state.buildroom.map(n => ({
+            name: "Building "+n.building_number,
+            value: n.count
           }) );
-        const options = {
+        const option = {
             // backgroundColor: "rgb(43, 51, 59)",
-            grid: {
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0
-            },
+            //                backgroundColor: "#0074e0"
             tooltip: {
               trigger: "item",
               formatter: "{a}<br/><strong>{b}</strong>: {c} ",
@@ -38,18 +31,14 @@ export default class Firstchart extends Component {
               icon: "circle",
               orient: 'vertical',
               left: 'right',
-              
-              itemGap: 13.5,
-              data: roomevent.map( ({name}) => ({name}) ),
+              data: buildroom.map( ({name}) => ({name}) ),
               textStyle: {
                 color: "white",
-                fontFamily: "Courier New",
-                fontSize: 14,
+                fontFamily: "Ubuntu",
+                fontSize: 17,
                 padding: [3, 3, 3, 3],
                 fontStyle: "normal",
                 fontWeight: "bold",
-                backgroundColor: "#0074e0"
-
               },
             },
             series: [
@@ -67,7 +56,6 @@ export default class Firstchart extends Component {
                 roseType: "area",
                 selectedMode: "multiple",
                 label: {
-                  paddingTop:'120px',
                   normal: {
                     show: false,
                   },
@@ -75,19 +63,18 @@ export default class Firstchart extends Component {
                     show: false,
                   },
                 },
-                data: roomevent.map( ({name, value}) => ({ name, value }) ),
+                data: buildroom.map( ({name, value}) => ({ name, value }) ),
               },
             ],
           };
-
         return (
             <>
-          <h2 className="titular chart-title cursor">Room - Event</h2>
+          <h2 className="titular chart-title cursor">Building - Room</h2>
           <ReactEcharts
-            option={options}
             lazyUpdate={true}
+            option={option}
             className="sizecharts pie-chart "
-          />       
+          />
             </>
         )
     }

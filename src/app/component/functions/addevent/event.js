@@ -11,9 +11,12 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { red,blue } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
 import moment from "moment";
+import PlaceIcon from '@material-ui/icons/Place';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import InputAdornment from "@material-ui/core/InputAdornment";
+
 import './event.css';
 //import axios from "axios";
 
@@ -140,11 +143,20 @@ export const Eventcal = (props) => {
                           id="outlined-select-currency-native"
                           select
                           defaultValue = ""
-                          style={{ width: "14em"}}
-                          label="Room Name"
+                          style={{ width: "14em"}} 
+                          placeholder="Room Name"
                           name="room_name" 
+                          value={props.room[0].room_name}
                           onChange={changeHandle}
                           variant="outlined"
+                          label="Room Name"
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <PlaceIcon />
+                              </InputAdornment >
+                            )
+                          }} 
                         >
                           {props.room.map((option) => (
                             <MenuItem  key={option.room_name} value={option.room_name}> {option.room_name} </MenuItem>
@@ -152,7 +164,15 @@ export const Eventcal = (props) => {
                         </TextField>
                       </div>
                       <div className="event-details2">
-                        <TextField  disabled style={{ width: "14em"}} InputProps={{ readOnly: true, }} id="outlined-select-currency-native" variant="outlined" label="Person" defaultValue="Person" />
+                        <TextField  disabled style={{ width: "14em"}} 
+                        InputProps={{readOnly: true,
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AccountCircleIcon />
+                            </InputAdornment >
+                          )
+                        }}
+                        id="outlined-select-currency-native" variant="outlined" label="Person" defaultValue="Person" />
                       </div>
                   </div>
                 </form>
