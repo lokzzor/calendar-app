@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './header.css';
 
 import { Link } from 'react-router-dom'
@@ -7,9 +7,14 @@ import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import HomeIcon from '@material-ui/icons/Home';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import TouchAppIcon from '@material-ui/icons/TouchApp';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout} from '../../../../reducers/userReducer'
 
-export default class AppHeader extends Component {
-    render() {
+    const AppHeader =() =>{
+        const isAuth = useSelector(state => state.user.isAuth);
+        const dispatch = useDispatch();
         return (
             <>
                 <div className="navbar">
@@ -31,16 +36,28 @@ export default class AppHeader extends Component {
                                 </IconButton>
                                 <Link className="link" to="/event-list">Event</Link>
                             </div>
-                            <div>
+                            { isAuth && <div>
                                 <IconButton color="inherit">
                                     <Link className="link" to="/dictionary"><SettingsApplicationsIcon className="navicons menu-icon" /></Link>
                                 </IconButton>
                                 <Link className="link" to="/dictionary">Dictionary</Link>
-                            </div>
+                            </div>}
+                            { !isAuth && <div>
+                                <IconButton color="inherit">
+                                    <Link className="link" to="/account"><TouchAppIcon className="navicons menu-icon" /></Link>
+                                </IconButton>
+                                <Link className="link" to="/account">Sing In</Link>
+                            </div>}
+                            { isAuth && <div  onClick={() => { dispatch(logout()) }}>
+                                <IconButton color="inherit">
+                                    <Link to="/#" className="link"><MeetingRoomIcon className="navicons menu-icon" /></Link>
+                                </IconButton>
+                                <Link className="link" to="/#"  >Log Out</Link>
+                            </div>}
                         </div>
                     </div>
                 </div>
             </>
         )
     }
-}
+export default AppHeader;

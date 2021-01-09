@@ -19,7 +19,6 @@ export default class Smcalendar extends Component {
         })
 
         await axios.get("/api/get/scalendarselect").then((resp) => {
-            console.log(resp.data)
             if(resp.data.length === 0){
                 const pre =<li className="listli"  key='1'><DonutLargeIcon className="colorcircle"/><span className="titleevent">There are no scheduled events today</span></li>;
                 this.setState(() => ({ eventdata: pre }));

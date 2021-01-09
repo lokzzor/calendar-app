@@ -1,15 +1,30 @@
-import React, {useState} from 'react';
+import React, { Component } from 'react'
 import './login.css';
+import axios from "axios";
 import CreateIcon from '@material-ui/icons/Create';
 import { Spring  } from 'react-spring/renderprops';
 
 
-const Login = () => {
-    const [login, setLogin]=useState('');
-    const [password, setPassword]=useState('');
-    const handleInputChange = event => { props.setValue({ [event.target.name]: event.target.value }); }
+export default class AppLogin extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            login: '',
+            password: ''
+        };
+    }
+    handleInputChange = event => { this.setState({ [event.target.name]: event.target.value }); }
 
-    return (
+    openModal = (event) => {
+        const login =this.state.login;
+        const password =this.state.password;
+        event.preventDefault();
+        axios.post("api/auth/login", { login, password }).then((resp) => {console.log(resp.data);
+        this.setState(() => ({ alert: resp.data }));
+        })
+    }
+    render() {
+        return (
             <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 60 }}>
                 { props => (
                     <div className="mainlogin" style={ props }>
@@ -26,11 +41,11 @@ const Login = () => {
                                     <div className="contentlogin">
                                         <div className="inputtext">
                                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" className="svg-inline--fa fa-user-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg>
-                                            <input name="login"  autoFocus={true} placeholder="Enter login" value={login} setValue={setLogin} onChange={handleInputChange} required/>
+                                            <input name="login"  autoFocus={true} placeholder="Enter login" value={this.state.login} onChange={this.handleInputChange} required/>
                                         </div>
                                         <div className="inputtext">
                                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="key" className="svg-inline--fa fa-key fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M512 176.001C512 273.203 433.202 352 336 352c-11.22 0-22.19-1.062-32.827-3.069l-24.012 27.014A23.999 23.999 0 0 1 261.223 384H224v40c0 13.255-10.745 24-24 24h-40v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24v-78.059c0-6.365 2.529-12.47 7.029-16.971l161.802-161.802C163.108 213.814 160 195.271 160 176 160 78.798 238.797.001 335.999 0 433.488-.001 512 78.511 512 176.001zM336 128c0 26.51 21.49 48 48 48s48-21.49 48-48-21.49-48-48-48-48 21.49-48 48z"></path></svg>
-                                            <input type="password" name="password" placeholder="Enter password" value={password} setValue={setPassword} onChange={handleInputChange} required type="password"/>
+                                            <input type="password" name="password" placeholder="Enter password" value={this.state.password} onChange={this.handleInputChange} required type="password"/>
                                         </div>
                                     </div>
                                 </form>
@@ -41,7 +56,6 @@ const Login = () => {
                     </div>
                 )}
             </Spring>
-    );
-};
-
-export default Login;
+        )
+    }
+}
