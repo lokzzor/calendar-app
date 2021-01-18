@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './chart.css';
 import ReactEcharts from "echarts-for-react";
-import axios from "axios";
+import API from '../../../../reducers/api';
 
 
 export default class Secondchart extends Component {
     async componentDidMount() {
-      axios.get("/api/get/room_building").then((resp) => {
+      API.get("/api/get/room_building").then((resp) => {
         this.setState((state) => ({ buildroom: resp.data }));
       });
     }

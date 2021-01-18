@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './header.css';
 
 import { Link } from 'react-router-dom'
@@ -9,10 +9,14 @@ import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import HomeIcon from '@material-ui/icons/Home';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import TouchAppIcon from '@material-ui/icons/TouchApp';
-import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../../../../reducers/userReducer'
+import API from '../../../../reducers/api';
 
+import {logout} from '../../../../reducers/userReducer'
+import {useDispatch, useSelector} from 'react-redux';
     const AppHeader =() =>{
+        const [formcount, setFormcount] = useState(0);
+        const count = async () => { await API.get("/api/get/calendarnotevent").then((resp) => { setFormcount(resp.data[0].count) })}
+        count();
         const isAuth = useSelector(state => state.user.isAuth);
         const dispatch = useDispatch();
         return (
@@ -30,7 +34,7 @@ import {logout} from '../../../../reducers/userReducer'
                                 <Link className="link" to="/">Home</Link>
                             </div>
                             <div>
-                                <div className="test"><mark className="big swing">0</mark></div>
+                                <div className="test"><mark className="big swing">{formcount}</mark></div>
                                 <IconButton color="inherit">
                                     <Link className="link" to="/event-list"><EventAvailableIcon className="navicons menu-icon" /></Link>
                                 </IconButton>
@@ -50,9 +54,9 @@ import {logout} from '../../../../reducers/userReducer'
                             </div>}
                             { isAuth && <div  onClick={() => { dispatch(logout()) }}>
                                 <IconButton color="inherit">
-                                    <Link to="/#" className="link"><MeetingRoomIcon className="navicons menu-icon" /></Link>
+                                    <Link to="/" className="link"><MeetingRoomIcon className="navicons menu-icon" /></Link>
                                 </IconButton>
-                                <Link className="link" to="/#"  >Log Out</Link>
+                                <Link className="link" to="/"  >Log Out</Link>
                             </div>}
                         </div>
                     </div>

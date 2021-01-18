@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './weather.css';
 
-import axios from "axios";
+import API from '../../../../reducers/api';
 import moment from "moment";
 
 
@@ -22,15 +22,12 @@ import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 export default class Weather extends Component {
     async componentDidMount() {
       setInterval(() => this.setState({ time: moment().format("MMMM Do YYYY | HH:mm")}), 1000)
-      try {
-          await axios.get("/api/get/weather").then((resp) => {
-            this.setState(() => ({ weather: resp.data }));
-          });
-        } catch (error) {
-          console.log(error);
-        }
-        this.background();
-      }
+      await API.get("/api/get/weather").then((resp) => {
+          setTimeout( () => this.setState(() => ({ weather: resp.data })),10 );
+      });
+      this.background();
+    }
+    componentWillUnmount() { this.setState = ()=>{ return; };}
       state = {
         currentMonth: moment(new Date()).format("YYYY-MM-DD"),
         selectedDate: moment(new Date()).format("YYYY-MM-DD"),
@@ -87,7 +84,6 @@ export default class Weather extends Component {
             this.setState((state) => ({ weathericon: icon50 }));
           }
         } else {
-    
           this.setState((state) => ({ background: night }));
           if (this.state.weather.icon_obj === "01n") {
             this.setState((state) => ({ weathericon: icon1n }));
@@ -113,7 +109,6 @@ export default class Weather extends Component {
       }
 
     render() {
-        
         const clouds = this.state.weather.clouds;
         const vlag = this.state.weather.vlag;
         const wind = this.state.weather.wind;
@@ -123,10 +118,10 @@ export default class Weather extends Component {
         const divStyle = {
             backgroundImage: "url(" + this.state.background + ")",
             backgroundSize: "cover",
-          };
+        };
         return (
-            <>
-       <div className="flex-2side" style={divStyle}>
+        <>
+        <div className="flex-2side" style={divStyle}>
             <div className="parameter">
               <div className="city-info">
                 <p className="cityinf1 cursor">Dubna, Moscow region, Russia</p>
@@ -459,8 +454,8 @@ export default class Weather extends Component {
                 </div>
               </div>
             </div>
-          </div>
-            </>
+        </div>
+        </>
         )
     }
 }

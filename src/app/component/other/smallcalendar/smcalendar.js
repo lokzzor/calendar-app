@@ -6,19 +6,17 @@ import ListItem from "@material-ui/core/ListItem";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { Eventcal } from "../../functions/addevent/event.js"
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
-import axios from "axios";
+import API from '../../../../reducers/api';
 
 
 export default class Smcalendar extends Component {
-    componentDidMount() {
-        this.event();
-      }
-    async  event() {
-        await axios.get("/api/get/calendarselectroom").then((resp) => {
+    async componentDidMount() {
+        
+        await API.get("/api/get/calendarselectroom").then((resp) => {
             this.setState(() => ({ room: resp.data }));
         })
 
-        await axios.get("/api/get/scalendarselect").then((resp) => {
+        await API.get("/api/get/scalendarselect").then((resp) => {
             if(resp.data.length === 0){
                 const pre =<li className="listli"  key='1'><DonutLargeIcon className="colorcircle"/><span className="titleevent">There are no scheduled events today</span></li>;
                 this.setState(() => ({ eventdata: pre }));
@@ -29,9 +27,9 @@ export default class Smcalendar extends Component {
                     this.setState(() => ({ eventdata: pre2 }));
             }
         });
-      }
-      
-      constructor(props) {
+    }
+    componentWillUnmount() { this.setState = ()=>{ return; };}
+    constructor(props) {
         super(props);
         this.openModal = this.openModal.bind(this)
 

@@ -1,15 +1,17 @@
-.makeStyles-background-30 {
+/* .makeStyles-background-30 {
     background: #3468af !important;
 }
 
 
 
 
+*/
 .MuiFabbut {
     color: #fff !important;
     background-color: #f31313 !important;
-    position: absolute !important;
-    right: 16%;
-    bottom: -69%;
+    position: sticky !important;
+    height: 50px;
+    left: 80%;
+    bottom: 13%;
     z-index: 2;
-}
+} 

@@ -1,0 +1,30 @@
+.form-room-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 38%;
+    left: 10%;
+}
+.form-room-content > div{
+    margin-top: 7%;
+    background: whitesmoke;
+}
+.room-side{
+    display: flex;
+}
+.room-right-side{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+.room-modalwrapper {
+    width: 42em;
+    height: auto;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    color: #000;
+    position: relative;
+    z-index: 10;
+    border-radius: 10px;
+}

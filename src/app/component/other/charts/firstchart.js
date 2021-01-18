@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './chart.css';
 import ReactEcharts from "echarts-for-react";
-import axios from "axios";
+import API from '../../../../reducers/api';
 
 export default class Firstchart extends Component {
   
     async componentDidMount() {
-      await axios.get("/api/get/room_event").then((resp) => {
+      await API.get("/api/get/room_event").then((resp) => {
         this.setState((state) => ({ roomevent: resp.data })); 
       });
     }

@@ -52,8 +52,10 @@
   font-size: 1.25rem !important;
 }
 .h2{
-  font-weight: 500;
-  font-size: 2rem;
+  font-weight: 600;
+  font-size: 1.73em;
+  font-family: -apple-system, BlinkMacSystemFont, "SpaceGrotesk", "Lato", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  cursor: default;
   margin-left: 4%;  
 }
 
@@ -169,7 +171,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 6% 0 0px 2%;
+  padding: 5% 0 0 2%;
   font-size: 1.16rem;
   color: #007bff;
   cursor: default;
@@ -188,4 +190,54 @@
 
 .event-details2{
   padding: 2% 1% 1% 1%;
+}
+
+/* Check time */
+
+.calendar-input-time{
+  position: absolute;
+  top: 50%;
+  left: 94%;
+  width: 45%;
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #fff;
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
+  z-index: 11;
+  border-radius: 8px;
+}
+.calendar-input-time-head{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.calendar-input-time-content{
+  padding: 12px 8px;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  padding-top: 8px;
+  letter-spacing: 0.01071em;
+  background-color: #fff;
+}
+.calendar-input-time-content-event{
+  padding-bottom: 16px;
+  align-items: flex-start;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12px 8px;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  background-color: #fff;
+}
+.calendar-input-time-content-time{
+  align-items: center;
 }

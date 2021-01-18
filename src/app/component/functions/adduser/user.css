@@ -1,0 +1,50 @@
+.user-size{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    background: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400/4eacb444836431.582047bcb4aa6.jpg) 100%;
+    width: 100%;
+    height: 23em;
+    justify-content: center;
+    background-size: cover;
+}
+.user-size-add{
+    display: flex;
+}
+.form-room-left{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-room-rigth{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-room-left > div{
+    margin-top: 7%;
+    background: whitesmoke;
+}
+.form-room-rigth > div{
+    margin-top: 7%;
+    background: whitesmoke;
+}
+.checkbox-user {
+    display: flex;
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
+    justify-content: space-evenly;
+    padding: 2% 1% 1% 1%;
+}
+.checkbox-user label{
+    background: white;
+    padding-right: 10px;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(.3rem - 1px);
+    border-top-right-radius: calc(.3rem - 1px);
+}
