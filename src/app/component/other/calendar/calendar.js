@@ -47,8 +47,8 @@ export default class Calendar extends React.PureComponent {
 
     this.state = {
       eventdata: [],
-      startDayHour: 9,
-      endDayHour: 19,
+      startDayHour: 8,
+      endDayHour: 21,
       showModal: false,
       setShowModal: false,
       room:[]
@@ -88,19 +88,20 @@ export default class Calendar extends React.PureComponent {
             defaultCurrentDate={new Date()}
             onCurrentViewNameChange={this.currentViewNameChange}
           />
+          <WeekView
+            name="work-week"
+            displayName="Week"
+            startDayHour={startDayHour}
+            endDayHour={endDayHour}
+            excludedDays={[0, 8]}
+          />
           <DayView
             displayName={'Three days'}
             startDayHour={startDayHour}
             endDayHour={endDayHour}
             intervalCount={3}
           />
-          <WeekView
-            name="work-week"
-            displayName="Week"
-            startDayHour={startDayHour}
-            endDayHour={endDayHour}
-            excludedDays={[0, 6]}
-          />
+
           <MonthView />
           <Toolbar />
           <DateNavigator />
